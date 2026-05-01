@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)file:///C:/Users/copps/Downloads/maquestioncitoyenne%20(8).html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma Question Citoyenne — Parlez à votre député</title>
+<meta name="description" content="Posez une question citoyenne à votre député en un clic. Entrez votre code postal, votre mail s&#39;ouvre pré-rempli.">
+<meta property="og:title" content="Ma Question Citoyenne">
+<meta property="og:description" content="Une question par semaine. Votre député. Un clic.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:    #1a2744;
+  --navy2:   #152039;
+  --navy3:   #0f1a2e;
+  --blue:    #4a7fd4;
+  --blue2:   #8fa8d8;
+  --gold:    #c8a84b;
+  --gold2:   #e8c96b;
+  --white:   #ffffff;
+  --offwhite:#f5f7fb;
+  --muted:   #8a9bb8;
+  --green:   #1d9e75;
+  --green2:  #eaf4f0;
+  --green3:  #0f6e56;
+  --red:     #c0392b;
+  --red2:    #fdf2f2;
+  --serif:   'Playfair Display', Georgia, serif;
+  --sans:    'DM Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--offwhite);
+  color: var(--navy);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.fade-up { animation: fadeUp 0.55s ease both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.45s; }
+
+/* ── Header ── */
+header {
+  background: var(--navy3);
+  border-bottom: 1px solid rgba(74,127,212,0.15);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 32px;
+  height: 32px;
+}
+.logo-name {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+.header-badge {
+  font-size: 11px;
+  color: var(--blue2);
+  letter-spacing: 0.06em;
+  font-weight: 300;
+}
+
+/* ── Hero ── */
+.hero {
+  background: var(--navy);
+  padding: 5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 400px; height: 400px;
+  border: 1px solid rgba(74,127,212,0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 280px; height: 280px;
+  border: 1px solid rgba(74,127,212,0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-block;
+  background: rgba(74,127,212,0.15);
+  border: 1px solid rgba(74,127,212,0.3);
+  color: var(--blue2);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--blue2);
+  line-height: 1.75;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+}
+.gold-bar {
+  width: 40px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: 0 auto 2rem;
+}
+
+/* ── Privacy banner ── */
+.privacy-banner {
+  background: rgba(29,158,117,0.12);
+  border: 1px solid rgba(29,158,117,0.25);
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.privacy-banner svg { flex-shrink: 0; }
+.privacy-banner p {
+  font-size: 12px;
+  color: #6fcfaa;
+  line-height: 1.5;
+  text-align: left;
+}
+.privacy-banner strong { color: #a8e8cf; font-weight: 500; }
+
+/* ── Main container ── */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* ── Question card ── */
+.question-card {
+  background: var(--white);
+  border: 1px solid #dde4f0;
+  border-radius: 14px;
+  padding: 2rem 2.25rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 2rem;
+  width: 50px; height: 3px;
+  background: var(--gold);
+  border-radius: 0 0 3px 3px;
+}
+.q-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+.q-week {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.q-theme {
+  background: #e8f0fb;
+  color: #0c447c;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+.q-text {
+  font-family: var(--serif);
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.65;
+  border-left: 3px solid var(--navy);
+  padding-left: 1.25rem;
+  border-radius: 0;
+}
+
+/* ── Steps ── */
+.step-card {
+  background: var(--white);
+  border: 1px solid #dde4f0;
+  border-radius: 14px;
+  padding: 1.75rem 2.25rem;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s;
+}
+.step-card.active { border-color: var(--blue); }
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+.step-num {
+  width: 28px; height: 28px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500;
+  flex-shrink: 0;
+}
+.step-num.done { background: var(--green); }
+.step-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+}
+
+/* ── Code postal input ── */
+.cp-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+.cp-input {
+  flex: 1;
+  height: 48px;
+  padding: 0 16px;
+  font-family: var(--sans);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  border: 1.5px solid #c0cfe8;
+  border-radius: 10px;
+  color: var(--navy);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cp-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(74,127,212,0.12);
+}
+.cp-input::placeholder { color: #b0bdd4; font-size: 16px; letter-spacing: 0.04em; }
+.btn-search {
+  height: 48px;
+  padding: 0 22px;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.1s;
+  display: flex; align-items: center; gap: 8px;
+}
+.btn-search:hover { background: #263d6b; }
+.btn-search:active { transform: scale(0.97); }
+
+/* ── Deputy result ── */
+.deputy-result {
+  margin-top: 1.25rem;
+  animation: fadeUp 0.35s ease both;
+}
+.deputy-found {
+  background: var(--offwhite);
+  border: 1px solid #c0cfe8;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.deputy-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: #e8f0fb;
+  color: #0c447c;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.deputy-name { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+.deputy-circ { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.deputy-email { font-size: 12px; color: var(--blue); margin-bottom: 6px; }
+.deputy-groupe {
+  display: inline-block;
+  background: var(--green2);
+  color: var(--green3);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+.error-box {
+  background: var(--red2);
+  border: 1px solid #f0c0c0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--red);
+  line-height: 1.6;
+}
+
+/* ── Mail preview ── */
+.mail-preview {
+  background: var(--offwhite);
+  border: 1px solid #c0cfe8;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.mail-topbar {
+  background: var(--navy);
+  padding: 8px 14px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.mail-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mail-body { padding: 1.25rem 1.5rem; }
+.mail-field {
+  display: flex;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid #dde4f0;
+  font-size: 13px;
+}
+.mail-field:last-of-type { border-bottom: none; margin-bottom: 0.75rem; }
+.mail-label { color: var(--muted); width: 52px; flex-shrink: 0; font-weight: 500; }
+.mail-val { color: var(--navy); }
+.mail-val.blue { color: var(--blue); }
+.mail-content {
+  font-size: 13px;
+  color: var(--navy);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.mail-sig {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dde4f0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.mail-sig strong { color: var(--navy); }
+
+/* ── Send button ── */
+.btn-send {
+  width: 100%;
+  height: 52px;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s, transform 0.1s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-send:not(:disabled):hover { background: #263d6b; }
+.btn-send:not(:disabled):active { transform: scale(0.98); }
+.btn-send:disabled {
+  background: #d4dae8;
+  color: #9aa5bc;
+  cursor: default;
+}
+.btn-send-note {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* ── Disabled step ── */
+.step-locked {
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.step-locked.unlocked {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Privacy section ── */
+.privacy-section {
+  background: var(--white);
+  border: 1px solid #dde4f0;
+  border-radius: 14px;
+  padding: 1.75rem 2.25rem;
+  margin-bottom: 1.25rem;
+}
+.privacy-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.privacy-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f3f8;
+}
+.privacy-item:last-child { border-bottom: none; padding-bottom: 0; }
+.p-icon {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.p-ok { background: var(--green2); }
+.p-no { background: #fdecea; }
+.p-text { font-size: 13px; color: #444; line-height: 1.6; }
+.p-text strong { color: var(--navy); font-weight: 500; }
+
+/* ── Charte section ── */
+.charte-section {
+  background: #fffdf5;
+  border: 1px solid #e8d99a;
+  border-radius: 14px;
+  padding: 1.75rem 2.25rem;
+  margin-bottom: 1.25rem;
+}
+.charte-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #7a5f10;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.charte-text {
+  font-size: 13px;
+  color: #6b5012;
+  line-height: 1.75;
+}
+
+/* ── Legal footer ── */
+.legal-box {
+  background: var(--offwhite);
+  border: 1px solid #dde4f0;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  border-left: 3px solid var(--navy);
+  border-radius: 0 8px 8px 0;
+}
+.legal-box strong { color: var(--navy); font-weight: 500; }
+
+/* ── Site footer ── */
+footer {
+  background: var(--navy3);
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(74,127,212,0.15);
+}
+footer p { font-size: 12px; color: var(--muted); line-height: 1.8; }
+footer strong { color: var(--blue2); font-weight: 500; }
+footer a { color: var(--blue); text-decoration: none; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .hero { padding: 3.5rem 1.25rem 3rem; }
+  main { padding: 2rem 1rem 4rem; }
+  .step-card, .question-card, .privacy-section, .charte-section { padding: 1.25rem 1.25rem; }
+  .cp-row { flex-direction: column; }
+  .btn-search { height: 44px; }
+  .cp-input { height: 44px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="file:///C:/Users/copps/Downloads/maquestioncitoyenne%20(8).html#">
+      <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="15" stroke="#4a7fd4" stroke-width="1.2"></circle>
+        <path d="M9 11h14M9 16h9M9 21h11" stroke="#8fa8d8" stroke-width="1.3" stroke-linecap="round"></path>
+        <circle cx="23" cy="21" r="4.5" fill="#4a7fd4"></circle>
+        <path d="M21.5 21l1.2 1.2 2-2" stroke="#fff" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span class="logo-name">Ma Question Citoyenne</span>
+    </a>
+    <span class="header-badge">Démocratie &amp; Institutions</span>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow fade-up">Question de la semaine · Semaine du 14 avril 2025</div>
+    <h1 class="fade-up delay-1">Une question.<br><em>Votre député.</em> Un clic.</h1>
+    <div class="gold-bar fade-up delay-2"></div>
+    <p class="hero-sub fade-up delay-2">Chaque semaine, notre équipe rédige une question citoyenne. Entrez votre code postal — votre mail s'ouvre pré-rempli, adressé directement à votre élu.</p>
+    <div class="privacy-banner fade-up delay-3">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 1.5L2 4.5v4.5c0 4 2.9 7.5 7 8.5 4.1-1 7-4.5 7-8.5V4.5L9 1.5z" stroke="#6fcfaa" stroke-width="1.2" fill="none"></path>
+        <path d="M6 9l2.2 2.2 3.8-3.8" stroke="#6fcfaa" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <p><strong>Aucune donnée collectée.</strong> Votre code postal reste dans votre navigateur. Rien ne transite par nos serveurs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- Question de la semaine -->
+  <div class="question-card fade-up">
+    <div class="q-meta">
+      <span class="q-week">Question n° 01</span>
+      <span class="q-theme">Démocratie &amp; Institutions</span>
+    </div>
+    <p class="q-text">Dans le cadre du débat sur la réforme des institutions, quelles mesures concrètes envisagez-vous pour renforcer la transparence du vote parlementaire et faciliter l'accès des citoyens aux travaux de l'Assemblée nationale ?</p>
+  </div>
+
+  <!-- ÉTAPE 1 — Code postal -->
+  <div class="step-card fade-up delay-1" id="step1">
+    <div class="step-header">
+      <div class="step-num done" id="num1"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div class="step-title">Où résidez-vous ?</div>
+    </div>
+
+    <!-- Basculeur France / Étranger -->
+    <div style="display:flex;gap:0;margin-bottom:1.25rem;border:0.5px solid #c0cfe8;border-radius:10px;overflow:hidden;">
+      <button id="tab-france" onclick="switchTab(&#39;france&#39;)" style="flex:1;height:40px;border:none;background:#1a2744;color:#fff;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;transition:background 0.15s;">
+        En France
+      </button>
+      <button id="tab-etranger" onclick="switchTab(&#39;etranger&#39;)" style="flex:1;height:40px;border:none;background:#fff;color:#8a9bb8;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;border-left:0.5px solid #c0cfe8;transition:background 0.15s;">
+        À l'étranger
+      </button>
+    </div>
+
+    <!-- Panneau France -->
+    <div id="panel-france">
+      <div class="cp-row">
+        <input class="cp-input" type="text" id="cp" placeholder="Ex : 75011" maxlength="5" inputmode="numeric" autocomplete="off">
+        <button class="btn-search" onclick="findDeputy()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="#fff" stroke-width="1.3"></circle><path d="M11 11l3 3" stroke="#fff" stroke-width="1.3" stroke-linecap="round"></path></svg>
+          Trouver mon député
+        </button>
+      </div>
+    </div>
+
+    <!-- Panneau Étranger -->
+    <div id="panel-etranger" style="display:none;">
+      <div class="cp-row">
+        <select id="pays-select" style="flex:1;height:48px;padding:0 14px;font-family:var(--sans);font-size:15px;border:1.5px solid #c0cfe8;border-radius:10px;color:#1a2744;background:#fff;outline:none;cursor:pointer;">
+          <option value="">-- Sélectionnez votre pays de résidence --</option>
+        <option value="Afghanistan">Afghanistan</option><option value="Afrique du Sud">Afrique du Sud</option><option value="Albanie">Albanie</option><option value="Algérie">Algérie</option><option value="Allemagne">Allemagne</option><option value="Andorre">Andorre</option><option value="Angola">Angola</option><option value="Antigua-et-Barbuda">Antigua-et-Barbuda</option><option value="Arabie saoudite">Arabie saoudite</option><option value="Argentine">Argentine</option><option value="Australie">Australie</option><option value="Autriche">Autriche</option><option value="Bahamas">Bahamas</option><option value="Bahreïn">Bahreïn</option><option value="Bangladesh">Bangladesh</option><option value="Barbade">Barbade</option><option value="Belgique">Belgique</option><option value="Belize">Belize</option><option value="Bhoutan">Bhoutan</option><option value="Birmanie">Birmanie</option><option value="Bolivie">Bolivie</option><option value="Bosnie-Herzégovine">Bosnie-Herzégovine</option><option value="Botswana">Botswana</option><option value="Brunei">Brunei</option><option value="Brésil">Brésil</option><option value="Bulgarie">Bulgarie</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Bénin">Bénin</option><option value="Cambodge">Cambodge</option><option value="Cameroun">Cameroun</option><option value="Canada">Canada</option><option value="Cap-Vert">Cap-Vert</option><option value="Centrafrique">Centrafrique</option><option value="Chili">Chili</option><option value="Chine">Chine</option><option value="Chypre">Chypre</option><option value="Colombie">Colombie</option><option value="Comores">Comores</option><option value="Congo">Congo</option><option value="Corée du Nord">Corée du Nord</option><option value="Corée du Sud">Corée du Sud</option><option value="Costa Rica">Costa Rica</option><option value="Croatie">Croatie</option><option value="Cuba">Cuba</option><option value="Côte d&#39;Ivoire">Côte d'Ivoire</option><option value="Danemark">Danemark</option><option value="Djibouti">Djibouti</option><option value="Dominique">Dominique</option><option value="Espagne">Espagne</option><option value="Estonie">Estonie</option><option value="Fidji">Fidji</option><option value="Finlande">Finlande</option><option value="Gabon">Gabon</option><option value="Gambie">Gambie</option><option value="Ghana">Ghana</option><option value="Grenade">Grenade</option><option value="Grèce">Grèce</option><option value="Guatemala">Guatemala</option><option value="Guinée">Guinée</option><option value="Guinée équatoriale">Guinée équatoriale</option><option value="Guinée-Bissau">Guinée-Bissau</option><option value="Guyana">Guyana</option><option value="Haïti">Haïti</option><option value="Honduras">Honduras</option><option value="Hongrie">Hongrie</option><option value="Inde">Inde</option><option value="Indonésie">Indonésie</option><option value="Irak">Irak</option><option value="Iran">Iran</option><option value="Irlande">Irlande</option><option value="Islande">Islande</option><option value="Israël">Israël</option><option value="Italie">Italie</option><option value="Jamaïque">Jamaïque</option><option value="Japon">Japon</option><option value="Jordanie">Jordanie</option><option value="Kenya">Kenya</option><option value="Kiribati">Kiribati</option><option value="Kosovo">Kosovo</option><option value="Koweït">Koweït</option><option value="Laos">Laos</option><option value="Lesotho">Lesotho</option><option value="Lettonie">Lettonie</option><option value="Liban">Liban</option><option value="Liberia">Liberia</option><option value="Libye">Libye</option><option value="Liechtenstein">Liechtenstein</option><option value="Lituanie">Lituanie</option><option value="Luxembourg">Luxembourg</option><option value="Macédoine du Nord">Macédoine du Nord</option><option value="Madagascar">Madagascar</option><option value="Malaisie">Malaisie</option><option value="Malawi">Malawi</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malte">Malte</option><option value="Maroc">Maroc</option><option value="Marshall">Marshall</option><option value="Maurice">Maurice</option><option value="Mauritanie">Mauritanie</option><option value="Mexique">Mexique</option><option value="Micronésie">Micronésie</option><option value="Monaco">Monaco</option><option value="Mongolie">Mongolie</option><option value="Monténégro">Monténégro</option><option value="Mozambique">Mozambique</option><option value="Namibie">Namibie</option><option value="Nauru">Nauru</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="Norvège">Norvège</option><option value="Nouvelle-Zélande">Nouvelle-Zélande</option><option value="Népal">Népal</option><option value="Oman">Oman</option><option value="Ouganda">Ouganda</option><option value="Pakistan">Pakistan</option><option value="Palaos">Palaos</option><option value="Palestine">Palestine</option><option value="Panama">Panama</option><option value="Papouasie-Nouvelle-Guinée">Papouasie-Nouvelle-Guinée</option><option value="Paraguay">Paraguay</option><option value="Pays-Bas">Pays-Bas</option><option value="Philippines">Philippines</option><option value="Pologne">Pologne</option><option value="Portugal">Portugal</option><option value="Pérou">Pérou</option><option value="Qatar">Qatar</option><option value="Roumanie">Roumanie</option><option value="Royaume-Uni">Royaume-Uni</option><option value="Russie">Russie</option><option value="Rwanda">Rwanda</option><option value="République dominicaine">République dominicaine</option><option value="République démocratique du Congo">République démocratique du Congo</option><option value="République tchèque">République tchèque</option><option value="Saint-Christophe-et-Niévès">Saint-Christophe-et-Niévès</option><option value="Saint-Vincent-et-les-Grenadines">Saint-Vincent-et-les-Grenadines</option><option value="Sainte-Lucie">Sainte-Lucie</option><option value="Salomon">Salomon</option><option value="Salvador">Salvador</option><option value="Samoa">Samoa</option><option value="Serbie">Serbie</option><option value="Seychelles">Seychelles</option><option value="Sierra Leone">Sierra Leone</option><option value="Singapour">Singapour</option><option value="Slovaquie">Slovaquie</option><option value="Slovénie">Slovénie</option><option value="Somalie">Somalie</option><option value="Soudan">Soudan</option><option value="Soudan du Sud">Soudan du Sud</option><option value="Sri Lanka">Sri Lanka</option><option value="Suisse">Suisse</option><option value="Suriname">Suriname</option><option value="Suède">Suède</option><option value="Syrie">Syrie</option><option value="São Tomé-et-Príncipe">São Tomé-et-Príncipe</option><option value="Sénégal">Sénégal</option><option value="Tanzanie">Tanzanie</option><option value="Taïwan">Taïwan</option><option value="Tchad">Tchad</option><option value="Thaïlande">Thaïlande</option><option value="Timor oriental">Timor oriental</option><option value="Togo">Togo</option><option value="Tonga">Tonga</option><option value="Trinité-et-Tobago">Trinité-et-Tobago</option><option value="Tunisie">Tunisie</option><option value="Turquie">Turquie</option><option value="Tuvalu">Tuvalu</option><option value="Ukraine">Ukraine</option><option value="Uruguay">Uruguay</option><option value="Vanuatu">Vanuatu</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yémen">Yémen</option><option value="Zambie">Zambie</option><option value="Zimbabwe">Zimbabwe</option><option value="Égypte">Égypte</option><option value="Émirats arabes unis">Émirats arabes unis</option><option value="Équateur">Équateur</option><option value="Érythrée">Érythrée</option><option value="États-Unis">États-Unis</option><option value="Éthiopie">Éthiopie</option></select>
+        <button class="btn-search" onclick="findDeputyEtranger()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="#fff" stroke-width="1.3"></circle><path d="M11 11l3 3" stroke="#fff" stroke-width="1.3" stroke-linecap="round"></path></svg>
+          Trouver mon député
+        </button>
+      </div>
+      <div style="font-size:12px;color:#8a9bb8;margin-top:8px;line-height:1.5;">
+        Les Français établis hors de France sont représentés par 11 députés, chacun couvrant une zone géographique.
+      </div>
+    </div>
+
+    <div id="deputy-result"><div class="deputy-result"><div class="deputy-found"><div class="deputy-avatar">XA</div><div><div class="deputy-name">Xavier Albertini</div><div class="deputy-circ">1re circ. — Marne</div><div class="deputy-email">xavier.albertini@assemblee-nationale.fr</div><div class="deputy-groupe">Groupe Membre du</div></div></div><p style="font-size:11px;color:#8a9bb8;margin-top:10px;line-height:1.5;">Si ce député ne correspond pas à votre circonscription exacte, <a href="https://www.assemblee-nationale.fr/dyn/vos-deputes" target="_blank" style="color:#4a7fd4;">vérifiez sur assemblee-nationale.fr</a>.</p></div></div>
+  </div>
+
+  <!-- ÉTAPE 2 — Mail -->
+  <div class="step-card fade-up delay-2 unlocked" id="step2">
+    <div class="step-header">
+      <div class="step-num" id="num2">2</div>
+      <div class="step-title">Votre mail pré-rédigé</div>
+    </div>
+    <div id="mail-container"><div class="mail-preview" style="margin-bottom:1rem;"><div class="mail-topbar"><div class="mail-dot" style="background:#e74c3c;"></div><div class="mail-dot" style="background:#f39c12;"></div><div class="mail-dot" style="background:#2ecc71;"></div></div><div class="mail-body"><div class="mail-field"><span class="mail-label">À</span><span class="mail-val blue">xavier.albertini@assemblee-nationale.fr</span></div><div class="mail-field"><span class="mail-label">Objet</span><span class="mail-val">Pourquoi n'avons-nous plus recours au référendum ?</span></div><div class="mail-content">Monsieur le Député,<br><br>En tant que citoyen(ne) de votre circonscription, je me permets de vous adresser la question suivante :<br><br>« Depuis le référendum de 2005, aucun scrutin référendaire national n'a été organisé en France, alors même que la Constitution de la Ve République prévoit explicitement ce recours comme l'une des expressions majeures de la souveraineté populaire. Comment expliquer une telle absence, alors que le référendum constitue un exercice démocratique essentiel, permettant au peuple de se prononcer directement sur les grandes orientations de la Nation ?<br><br>Cette question est d'autant plus légitime que le président de la République lui-même a affirmé, dès le Congrès de Versailles en juillet 2017, que « si cela est nécessaire, je recourrai au vote de nos concitoyens par voie de référendum » — engagement réitéré à plusieurs reprises depuis, sans qu'il n'ait à ce jour été concrétisé.<br><br>Dans cet esprit fidèle à nos institutions républicaines, pouvez-vous, dans le cadre de votre mandat, interroger le gouvernement sur les raisons de cette mise en retrait du référendum depuis plus de vingt ans, et sur les conditions dans lesquelles cet outil démocratique pourrait de nouveau être pleinement mobilisé ? »<br><br>Je vous serais reconnaissant(e) de bien vouloir me faire part de votre position sur ce sujet.<br><br>Dans l'attente de votre réponse, je vous adresse mes cordiales salutations.</div><div class="mail-sig">Envoyé via <strong>Ma Question Citoyenne</strong> — maquestioncitoyenne.fr</div></div></div></div>
+    <button class="btn-send" id="btn-send" onclick="openMail()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8L14 2l-5 12-2-5-5-1z" stroke="#fff" stroke-width="1.3" fill="none" stroke-linejoin="round"></path></svg>
+      Ouvrir mon client mail pour envoyer
+    </button>
+    <p class="btn-send-note">Votre application mail s'ouvre avec ce message pré-rempli. Vous restez entièrement libre d'envoyer ou non.</p>
+  </div>
+
+  <!-- Charte de conduite -->
+  <div class="charte-section fade-up delay-3">
+    <div class="charte-title">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L2 3.5v4c0 3.5 2.5 6.5 6 7.5 3.5-1 6-4 6-7.5v-4L8 1z" stroke="#c8a84b" stroke-width="1.2" fill="none"></path><path d="M5.5 8l2 2 3-3" stroke="#c8a84b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      Notre charte de courtoisie
+    </div>
+    <p class="charte-text">
+      Cette démarche citoyenne s'inscrit dans le respect du dialogue républicain. Les questions publiées sont formulées avec courtoisie et s'appuient sur des faits publics vérifiables. Toute violence, insulte ou affirmation non sourcée est exclue. Nous nous adressons à tous les élus sans distinction de parti.
+      <br><br>
+      En envoyant ce mail, vous participez à une démarche collective et pacifique d'interpellation démocratique.
+    </p>
+  </div>
+
+  <!-- Garanties vie privée -->
+  <div class="privacy-section fade-up delay-4">
+    <div class="privacy-title">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L2 3.5v4c0 3.5 2.5 6.5 6 7.5 3.5-1 6-4 6-7.5v-4L8 1z" stroke="#1d9e75" stroke-width="1.2" fill="none"></path><path d="M5.5 8l2 2 3-3" stroke="#1d9e75" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      Nos garanties vie privée
+    </div>
+    <div class="privacy-item">
+      <div class="p-icon p-ok"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6e56" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div class="p-text"><strong>Aucun serveur intermédiaire.</strong> La recherche de votre député s'effectue entièrement dans votre navigateur, en JavaScript. Rien ne transite par nos serveurs.</div>
+    </div>
+    <div class="privacy-item">
+      <div class="p-icon p-ok"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6e56" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div class="p-text"><strong>Pas de cookies, pas de traceurs.</strong> Nous n'utilisons aucun outil d'analyse comportementale ni de publicité ciblée.</div>
+    </div>
+    <div class="privacy-item">
+      <div class="p-icon p-ok"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6e56" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div class="p-text"><strong>Le mail part de votre messagerie.</strong> Vous utilisez votre propre client mail (Gmail, Outlook, Apple Mail…). Nous ne voyons jamais votre adresse e-mail.</div>
+    </div>
+    <div class="privacy-item">
+      <div class="p-icon p-ok"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6e56" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div class="p-text"><strong>Code source ouvert et auditable.</strong> Le code de cette page est librement consultable. Vous pouvez vérifier vous-même qu'aucune donnée n'est collectée.</div>
+    </div>
+    <div class="privacy-item">
+      <div class="p-icon p-no"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="#a32d2d" stroke-width="1.4" stroke-linecap="round"></path></svg></div>
+      <div class="p-text"><strong>Zéro revente de données.</strong> Nous ne monétisons aucune donnée. Ce service est entièrement gratuit et sans publicité.</div>
+    </div>
+  </div>
+
+  <!-- Mention légale -->
+  <div class="legal-box">
+    <strong>Mention légale —</strong> Cette plateforme est un outil d'exercice démocratique. Elle ne collecte aucune donnée personnelle. Les questions proposées sont rédigées par notre équipe éditoriale dans un esprit de dialogue républicain. L'envoi du mail est effectué par le citoyen sous sa seule responsabilité.
+  </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>
+    <strong>Ma Question Citoyenne</strong> — Parlez à votre élu, directement.<br>
+    Questions rédigées de manière indépendante · Aucune affiliation partisane<br>
+    <a href="mailto:contact@maquestioncitoyenne.fr">contact@maquestioncitoyenne.fr</a>
+  </p>
+</footer>
+
+<script>
+const QUESTION = `Depuis le référendum de 2005, aucun scrutin référendaire national n'a été organisé en France, alors même que la Constitution de la Ve République prévoit explicitement ce recours comme l'une des expressions majeures de la souveraineté populaire. Comment expliquer une telle absence, alors que le référendum constitue un exercice démocratique essentiel, permettant au peuple de se prononcer directement sur les grandes orientations de la Nation ?
+
+Cette question est d'autant plus légitime que le président de la République lui-même a affirmé, dès le Congrès de Versailles en juillet 2017, que « si cela est nécessaire, je recourrai au vote de nos concitoyens par voie de référendum » — engagement réitéré à plusieurs reprises depuis, sans qu'il n'ait à ce jour été concrétisé.
+
+Dans cet esprit fidèle à nos institutions républicaines, pouvez-vous, dans le cadre de votre mandat, interroger le gouvernement sur les raisons de cette mise en retrait du référendum depuis plus de vingt ans, et sur les conditions dans lesquelles cet outil démocratique pourrait de nouveau être pleinement mobilisé ?`;
+const SUBJECT = `Pourquoi n'avons-nous plus recours au référendum ?`;
+
+const DEPUTIES_BY_DEPT = [
+  {dept:"01",circo:1,name:"Xavier Breton",circ:"1re circ. — Ain",email:"xavier.breton@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"01",circo:2,name:"Romain Daubié",circ:"2e circ. — Ain",email:"romain.daubie@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"01",circo:3,name:"Olga Givernet",circ:"3e circ. — Ain",email:"olga.givernet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"01",circo:4,name:"Jérôme Buisson",circ:"4e circ. — Ain",email:"jerome.buisson@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"01",circo:5,name:"Marc Chavent",circ:"5e circ. — Ain",email:"marc.chavent@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"02",circo:1,name:"Nicolas Dragon",circ:"1re circ. — Aisne",email:"nicolas.dragon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"02",circo:2,name:"Julien Dive",circ:"2e circ. — Aisne",email:"julien.dive@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"02",circo:3,name:"Eddy Casterman",circ:"3e circ. — Aisne",email:"eddy.casterman@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"02",circo:4,name:"José Beaurain",circ:"4e circ. — Aisne",email:"jose.beaurain@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"02",circo:5,name:"Jocelyn Dessigny",circ:"5e circ. — Aisne",email:"jocelyn.dessigny@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"03",circo:1,name:"Yannick Monnet",circ:"1re circ. — Allier",email:"yannick.monnet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"03",circo:2,name:"Jorys Bovet",circ:"2e circ. — Allier",email:"jorys.bovet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"03",circo:3,name:"Nicolas Ray",circ:"3e circ. — Allier",email:"nicolas.ray@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"04",circo:1,name:"Christian Girard",circ:"1re circ. — Alpes-de-Haute-Provence",email:"christian.girard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"04",circo:2,name:"Sophie Ricourt Vaginay",circ:"2e circ. — Alpes-de-Haute-Provence",email:"sophie.vaginay@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"05",circo:1,name:"Marie-José Allemand",circ:"1re circ. — Hautes-Alpes",email:"marie-jose.allemand@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"05",circo:2,name:"Valérie Rossi",circ:"2e circ. — Hautes-Alpes",email:"valerie.rossi@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"06",circo:1,name:"Éric Ciotti",circ:"1re circ. — Alpes-Maritimes",email:"eric.ciotti@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"06",circo:2,name:"Lionel Tivoli",circ:"2e circ. — Alpes-Maritimes",email:"lionel.tivoli@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"06",circo:3,name:"Bernard Chaix",circ:"3e circ. — Alpes-Maritimes",email:"bernard.chaix@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"06",circo:4,name:"Gabriel Tomatis",circ:"4e circ. — Alpes-Maritimes",email:"gabriel.tomatis@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"06",circo:5,name:"Christelle D'Intorni",circ:"5e circ. — Alpes-Maritimes",email:"christelle.dintorni@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"06",circo:6,name:"Cyril Tribuiani",circ:"6e circ. — Alpes-Maritimes",email:"cyril.tribuiani@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"06",circo:7,name:"Éric Pauget",circ:"7e circ. — Alpes-Maritimes",email:"eric.pauget@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"06",circo:8,name:"Alexandra Martin (Alpes-Maritimes)",circ:"8e circ. — Alpes-Maritimes",email:"alexandra.martin@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"06",circo:9,name:"Michèle Tabarot",circ:"9e circ. — Alpes-Maritimes",email:"michele.tabarot@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"07",circo:1,name:"Hervé Saulignac",circ:"1re circ. — Ardèche",email:"herve.saulignac@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"07",circo:2,name:"Vincent Trébuchet",circ:"2e circ. — Ardèche",email:"vincent.trebuchet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"07",circo:3,name:"Fabrice Brun",circ:"3e circ. — Ardèche",email:"fabrice.brun@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"08",circo:1,name:"Lionel Vuibert",circ:"1re circ. — Ardennes",email:"lionel.vuibert@assemblee-nationale.fr",groupe:"Député non-insc",civ:"M"},
+  {dept:"08",circo:2,name:"Pierre Cordier",circ:"2e circ. — Ardennes",email:"pierre.cordier@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"08",circo:3,name:"Jean-Luc Warsmann",circ:"3e circ. — Ardennes",email:"jean-luc.warsmann@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"09",circo:1,name:"Martine Froger",circ:"1re circ. — Ariège",email:"martine.froger@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"09",circo:2,name:"Audrey Abadie-Amiel",circ:"2e circ. — Ariège",email:"audrey.abadie@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"099",circo:1,name:"Christopher Weissberg",circ:"1re circ. — Français établis hors de France",email:"christopher.weissberg@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"099",circo:2,name:"Benoît Larrouquis",circ:"2e circ. — Français établis hors de France",email:"benoit.larrouquis@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"099",circo:3,name:"Vincent Caure",circ:"3e circ. — Français établis hors de France",email:"vincent.caure@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"099",circo:4,name:"Pieyre-Alexandre Anglade",circ:"4e circ. — Français établis hors de France",email:"pieyre-alexandre.anglade@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"099",circo:5,name:"Nathalie Coggia",circ:"5e circ. — Français établis hors de France",email:"nathalie.coggia@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"099",circo:6,name:"Marc Ferracci",circ:"6e circ. — Français établis hors de France",email:"marc.ferracci@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"099",circo:7,name:"Frédéric Petit",circ:"7e circ. — Français établis hors de France",email:"frederic.petit@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"099",circo:8,name:"Caroline Yadan",circ:"8e circ. — Français établis hors de France",email:"caroline.yadan@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"099",circo:9,name:"Karim Ben Cheikh",circ:"9e circ. — Français établis hors de France",email:"karim.bencheikh@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"099",circo:10,name:"Amélia Lakrafi",circ:"10e circ. — Français établis hors de France",email:"amelia.lakrafi@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"099",circo:11,name:"Anne Genetet",circ:"11e circ. — Français établis hors de France",email:"anne.genetet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"10",circo:1,name:"Jordan Guitton",circ:"1re circ. — Aube",email:"jordan.guitton@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"10",circo:2,name:"Valérie Bazin-Malgras",circ:"2e circ. — Aube",email:"valerie.bazin-malgras@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"10",circo:3,name:"Angélique Ranc",circ:"3e circ. — Aube",email:"angelique.ranc@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"11",circo:1,name:"Édouard Jordan",circ:"1re circ. — Aude",email:"edouard.jordan@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"11",circo:2,name:"Frédéric Falcon",circ:"2e circ. — Aude",email:"frederic.falcon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"11",circo:3,name:"Julien Rancoule",circ:"3e circ. — Aude",email:"julien.rancoule@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"12",circo:1,name:"Pauline Cestrières",circ:"1re circ. — Aveyron",email:"pauline.cestrieres@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"12",circo:2,name:"Laurent Alexandre",circ:"2e circ. — Aveyron",email:"laurent.alexandre@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"12",circo:3,name:"Jean-François Rousset",circ:"3e circ. — Aveyron",email:"jean-francois.rousset@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:1,name:"Monique Griseti",circ:"1re circ. — Bouches-du-Rhône",email:"monique.griseti@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"13",circo:2,name:"Laurent Lhardit",circ:"2e circ. — Bouches-du-Rhône",email:"laurent.lhardit@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:3,name:"Gisèle Lelouis",circ:"3e circ. — Bouches-du-Rhône",email:"gisele.lelouis@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"13",circo:4,name:"Manuel Bompard",circ:"4e circ. — Bouches-du-Rhône",email:"manuel.bompard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:5,name:"Hendrik Davi",circ:"5e circ. — Bouches-du-Rhône",email:"hendrik.davi@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:6,name:"Olivier Fayssat",circ:"6e circ. — Bouches-du-Rhône",email:"olivier.fayssat@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:7,name:"Sébastien Delogu",circ:"7e circ. — Bouches-du-Rhône",email:"sebastien.delogu@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:8,name:"Romain Tonussi",circ:"8e circ. — Bouches-du-Rhône",email:"romain.tonussi@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:9,name:"Joëlle Mélin",circ:"9e circ. — Bouches-du-Rhône",email:"joelle.melin@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"13",circo:10,name:"José Gonzalez",circ:"10e circ. — Bouches-du-Rhône",email:"jose.gonzalez@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:11,name:"Marc Pena",circ:"11e circ. — Bouches-du-Rhône",email:"marc.pena@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:12,name:"Franck Allisio",circ:"12e circ. — Bouches-du-Rhône",email:"franck.allisio@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:13,name:"Emmanuel Fouquart",circ:"13e circ. — Bouches-du-Rhône",email:"emmanuel.fouquart@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:14,name:"Gérault Verny",circ:"14e circ. — Bouches-du-Rhône",email:"gerault.verny@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:15,name:"Romain Baubry",circ:"15e circ. — Bouches-du-Rhône",email:"romain.baubry@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"13",circo:16,name:"Emmanuel Taché",circ:"16e circ. — Bouches-du-Rhône",email:"emmanuel.tache@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"14",circo:1,name:"Joël Bruneau",circ:"1re circ. — Calvados",email:"joel.bruneau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"14",circo:2,name:"Arthur Delaporte",circ:"2e circ. — Calvados",email:"arthur.delaporte@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"14",circo:3,name:"Jérémie Patrier-Leitus",circ:"3e circ. — Calvados",email:"jeremie.patrier-leitus@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"14",circo:4,name:"Christophe Blanchet",circ:"4e circ. — Calvados",email:"christophe.blanchet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"14",circo:5,name:"Bertrand Bouyx",circ:"5e circ. — Calvados",email:"bertrand.bouyx@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"14",circo:6,name:"Élisabeth Borne",circ:"6e circ. — Calvados",email:"elisabeth.borne@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"15",circo:1,name:"Vincent Descoeur",circ:"1re circ. — Cantal",email:"vincent.descoeur@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"15",circo:2,name:"Jean-Yves Bony",circ:"2e circ. — Cantal",email:"jean-yves.bony@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"16",circo:1,name:"René Pilato",circ:"1re circ. — Charente",email:"rene.pilato@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"16",circo:2,name:"Sandra Marsaud",circ:"2e circ. — Charente",email:"sandra.marsaud@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"16",circo:3,name:"Caroline Colombier",circ:"3e circ. — Charente",email:"caroline.colombier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"17",circo:1,name:"Sabine Gervais",circ:"1re circ. — Charente-Maritime",email:"sabine.gervais@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"17",circo:2,name:"Benoît Biteau",circ:"2e circ. — Charente-Maritime",email:"benoit.biteau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"17",circo:3,name:"Fabrice Barusseau",circ:"3e circ. — Charente-Maritime",email:"fabrice.barusseau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"17",circo:4,name:"Pascal Markowsky",circ:"4e circ. — Charente-Maritime",email:"pascal.markowsky@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"17",circo:5,name:"Christophe Plassard",circ:"5e circ. — Charente-Maritime",email:"christophe.plassard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"18",circo:1,name:"François Cormier-Bouligeon",circ:"1re circ. — Cher",email:"francois.cormier-bouligeon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"18",circo:2,name:"Nicolas Sansu",circ:"2e circ. — Cher",email:"nicolas.sansu@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"18",circo:3,name:"Loïc Kervran",circ:"3e circ. — Cher",email:"loic.kervran@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"19",circo:1,name:"François Hollande",circ:"1re circ. — Corrèze",email:"francois.hollande@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"19",circo:2,name:"Frédérique Meunier",circ:"2e circ. — Corrèze",email:"frederique.meunier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"21",circo:1,name:"Océane Godard",circ:"1re circ. — Côte-d'Or",email:"oceane.godard@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"21",circo:2,name:"Catherine Hervieu",circ:"2e circ. — Côte-d'Or",email:"catherine.hervieu@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"21",circo:3,name:"Pierre Pribetich",circ:"3e circ. — Côte-d'Or",email:"pierre.pribetich@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"21",circo:4,name:"Hubert Brigand",circ:"4e circ. — Côte-d'Or",email:"hubert.brigand@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"21",circo:5,name:"René Lioret",circ:"5e circ. — Côte-d'Or",email:"rene.lioret@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"22",circo:1,name:"Mickaël Cosson",circ:"1re circ. — Côtes-d'Armor",email:"mickael.cosson@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"22",circo:2,name:"Hervé Berville",circ:"2e circ. — Côtes-d'Armor",email:"herve.berville@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"22",circo:3,name:"Corentin Le Fur",circ:"3e circ. — Côtes-d'Armor",email:"corentin.lefur@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"22",circo:4,name:"Murielle Lepvraud",circ:"4e circ. — Côtes-d'Armor",email:"murielle.lepvraud@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"22",circo:5,name:"Éric Bothorel",circ:"5e circ. — Côtes-d'Armor",email:"eric.bothorel@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"23",circo:1,name:"Bartolomé Lenoir",circ:"1re circ. — Creuse",email:"bartolome.lenoir@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"24",circo:1,name:"Nadine Lechon",circ:"1re circ. — Dordogne",email:"nadine.lechon@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"24",circo:2,name:"Serge Muller",circ:"2e circ. — Dordogne",email:"serge.muller@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"24",circo:3,name:"Florence Joubert",circ:"3e circ. — Dordogne",email:"florence.joubert@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"24",circo:4,name:"Sébastien Peytavie",circ:"4e circ. — Dordogne",email:"sebastien.peytavie@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"25",circo:1,name:"Laurent Croizier",circ:"1re circ. — Doubs",email:"laurent.croizier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"25",circo:2,name:"Dominique Voynet",circ:"2e circ. — Doubs",email:"dominique.voynet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"25",circo:3,name:"Matthieu Bloch",circ:"3e circ. — Doubs",email:"matthieu.bloch@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"25",circo:4,name:"Géraldine Grangier",circ:"4e circ. — Doubs",email:"geraldine.grangier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"25",circo:5,name:"Eric Liégeon",circ:"5e circ. — Doubs",email:"eric.liegeon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"26",circo:1,name:"Paul Christophle",circ:"1re circ. — Drôme",email:"paul.christophle@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"26",circo:2,name:"Lisette Pollet",circ:"2e circ. — Drôme",email:"lisette.pollet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"26",circo:3,name:"Marie Pochon",circ:"3e circ. — Drôme",email:"marie.pochon@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"26",circo:4,name:"Thibaut Monnier",circ:"4e circ. — Drôme",email:"thibaut.monnier@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"27",circo:1,name:"Christine Loir",circ:"1re circ. — Eure",email:"christine.loir@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"27",circo:2,name:"Katiana Levavasseur",circ:"2e circ. — Eure",email:"katiana.levavasseur@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"27",circo:3,name:"Kévin Mauvieux",circ:"3e circ. — Eure",email:"kevin.mauvieux@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"27",circo:4,name:"Philippe Brun",circ:"4e circ. — Eure",email:"philippe.brun@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"27",circo:5,name:"Timothée Houssin",circ:"5e circ. — Eure",email:"timothee.houssin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"28",circo:1,name:"Guillaume Kasbarian",circ:"1re circ. — Eure-et-Loir",email:"guillaume.kasbarian@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"28",circo:2,name:"Christelle Minard",circ:"2e circ. — Eure-et-Loir",email:"christelle.minard@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"28",circo:3,name:"Harold Huwart",circ:"3e circ. — Eure-et-Loir",email:"harold.huwart@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"28",circo:4,name:"Philippe Vigier",circ:"4e circ. — Eure-et-Loir",email:"philippe.vigier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"29",circo:1,name:"Annaïg Le Meur",circ:"1re circ. — Finistère",email:"annaig.lemeur@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"29",circo:2,name:"Pierre-Yves Cadalen",circ:"2e circ. — Finistère",email:"pierre-yves.cadalen@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"29",circo:3,name:"Didier Le Gac",circ:"3e circ. — Finistère",email:"didier.legac@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"29",circo:4,name:"Sandrine Le Feur",circ:"4e circ. — Finistère",email:"sandrine.lefeur@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"29",circo:5,name:"Graziella Melchior",circ:"5e circ. — Finistère",email:"graziella.melchior@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"29",circo:6,name:"Mélanie Thomin",circ:"6e circ. — Finistère",email:"melanie.thomin@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"29",circo:7,name:"Liliana Tanguy",circ:"7e circ. — Finistère",email:"liliana.tanguy@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"29",circo:8,name:"Erwan Balanant",circ:"8e circ. — Finistère",email:"erwan.balanant@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"2A",circo:1,name:"Laurent Marcangeli",circ:"1re circ. — Corse-du-Sud",email:"laurent.marcangeli@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"2A",circo:2,name:"Paul-André Colombani",circ:"2e circ. — Corse-du-Sud",email:"paul-andre.colombani@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"2B",circo:1,name:"Michel Castellani",circ:"1re circ. — Haute-Corse",email:"michel.castellani@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"2B",circo:2,name:"François-Xavier Ceccoli",circ:"2e circ. — Haute-Corse",email:"francois-xavier.ceccoli@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"30",circo:1,name:"Yoann Gillet",circ:"1re circ. — Gard",email:"yoann.gillet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"30",circo:2,name:"Nicolas Meizonnet",circ:"2e circ. — Gard",email:"nicolas.meizonnet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"30",circo:3,name:"Catherine Dellong Meng",circ:"3e circ. — Gard",email:"catherine.dellongmeng@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"30",circo:4,name:"Pierre Meurin",circ:"4e circ. — Gard",email:"pierre.meurin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"30",circo:5,name:"Alexandre Allegret-Pilot",circ:"5e circ. — Gard",email:"alexandre.allegret-pilot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"30",circo:6,name:"Sylvie Josserand",circ:"6e circ. — Gard",email:"sylvie.josserand@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"31",circo:1,name:"Hadrien Clouet",circ:"1re circ. — Haute-Garonne",email:"hadrien.clouet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"31",circo:2,name:"Anne Stambach-Terrenoir",circ:"2e circ. — Haute-Garonne",email:"anne.stambach-terrenoir@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"31",circo:3,name:"Corinne Vignon",circ:"3e circ. — Haute-Garonne",email:"corinne.vignon@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"31",circo:4,name:"François Piquemal",circ:"4e circ. — Haute-Garonne",email:"francois.piquemal@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"31",circo:5,name:"Jean-François Portarrieu",circ:"5e circ. — Haute-Garonne",email:"jean-francois.portarrieu@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"31",circo:6,name:"Arnaud Simion",circ:"6e circ. — Haute-Garonne",email:"arnaud.simion@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"31",circo:7,name:"Christophe Bex",circ:"7e circ. — Haute-Garonne",email:"christophe.bex@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"31",circo:8,name:"Joël Aviragnet",circ:"8e circ. — Haute-Garonne",email:"joel.aviragnet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"31",circo:9,name:"Christine Arrighi",circ:"9e circ. — Haute-Garonne",email:"christine.arrighi@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"31",circo:10,name:"Jacques Oberti",circ:"10e circ. — Haute-Garonne",email:"jacques.oberti@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"32",circo:1,name:"Jean-René Cazeneuve",circ:"1re circ. — Gers",email:"jean-rene.cazeneuve@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"32",circo:2,name:"David Taupiac",circ:"2e circ. — Gers",email:"david.taupiac@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"33",circo:1,name:"Alexandra Martin (Gironde)",circ:"1re circ. — Gironde",email:"alexandra.martin.2@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"33",circo:2,name:"Nicolas Thierry",circ:"2e circ. — Gironde",email:"nicolas.thierry@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"33",circo:3,name:"Loïc Prud'homme",circ:"3e circ. — Gironde",email:"loic.prudhomme@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"33",circo:4,name:"Alain David",circ:"4e circ. — Gironde",email:"alain.david@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"33",circo:5,name:"Pascale Got",circ:"5e circ. — Gironde",email:"pascale.got@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"33",circo:6,name:"Marie Récalde",circ:"6e circ. — Gironde",email:"marie.recalde@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"33",circo:7,name:"Sébastien Saint-Pasteur",circ:"7e circ. — Gironde",email:"sebastien.saint-pasteur@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"33",circo:8,name:"Sophie Panonacle",circ:"8e circ. — Gironde",email:"sophie.panonacle@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"33",circo:9,name:"Sophie Mette",circ:"9e circ. — Gironde",email:"sophie.mette@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"33",circo:10,name:"Florent Boudié",circ:"10e circ. — Gironde",email:"florent.boudie@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"33",circo:11,name:"Edwige Diaz",circ:"11e circ. — Gironde",email:"edwige.diaz@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"33",circo:12,name:"Mathilde Feld",circ:"12e circ. — Gironde",email:"mathilde.feld@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"34",circo:1,name:"Jean-Louis Roumégas",circ:"1re circ. — Hérault",email:"jean-louis.roumegas@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"34",circo:2,name:"Nathalie Oziol",circ:"2e circ. — Hérault",email:"nathalie.oziol@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"34",circo:3,name:"Fanny Dombre Coste",circ:"3e circ. — Hérault",email:"fanny.dombrecoste@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"34",circo:4,name:"Manon Bouquin",circ:"4e circ. — Hérault",email:"manon.bouquin@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"34",circo:5,name:"Stéphanie Galzy",circ:"5e circ. — Hérault",email:"stephanie.galzy@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"34",circo:6,name:"Julien Gabarron",circ:"6e circ. — Hérault",email:"julien.gabarron@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"34",circo:7,name:"Bernard Chaumeil",circ:"7e circ. — Hérault",email:"bernard.chaumeil@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"34",circo:8,name:"Sylvain Carrière",circ:"8e circ. — Hérault",email:"sylvain.carriere@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"34",circo:9,name:"Charles Alloncle",circ:"9e circ. — Hérault",email:"charles.alloncle@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"35",circo:1,name:"Marie Mesmeur",circ:"1re circ. — Ille-et-Vilaine",email:"marie.mesmeur@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"35",circo:2,name:"Tristan Lahais",circ:"2e circ. — Ille-et-Vilaine",email:"tristan.lahais@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"35",circo:3,name:"Claudia Rouaux",circ:"3e circ. — Ille-et-Vilaine",email:"claudia.rouaux@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"35",circo:4,name:"Mathilde Hignet",circ:"4e circ. — Ille-et-Vilaine",email:"mathilde.hignet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"35",circo:5,name:"Christine Le Nabour",circ:"5e circ. — Ille-et-Vilaine",email:"christine.lenabour@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"35",circo:6,name:"Thierry Benoit",circ:"6e circ. — Ille-et-Vilaine",email:"thierry.benoit@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"35",circo:7,name:"Jean-Luc Bourgeaux",circ:"7e circ. — Ille-et-Vilaine",email:"jean-luc.bourgeaux@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"35",circo:8,name:"Mickaël Bouloux",circ:"8e circ. — Ille-et-Vilaine",email:"mickael.bouloux@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"36",circo:1,name:"François Jolivet",circ:"1re circ. — Indre",email:"francois.jolivet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"36",circo:2,name:"Alix Fruchon",circ:"2e circ. — Indre",email:"alix.fruchon@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"37",circo:1,name:"Charles Fournier",circ:"1re circ. — Indre-et-Loire",email:"charles.fournier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"37",circo:2,name:"Daniel Labaronne",circ:"2e circ. — Indre-et-Loire",email:"daniel.labaronne@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"37",circo:3,name:"Henri Alfandari",circ:"3e circ. — Indre-et-Loire",email:"henri.alfandari@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"37",circo:4,name:"Laurent Baumel",circ:"4e circ. — Indre-et-Loire",email:"laurent.baumel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"37",circo:5,name:"Sabine Thillaye",circ:"5e circ. — Indre-et-Loire",email:"sabine.thillaye@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"38",circo:1,name:"Alim Latrèche",circ:"1re circ. — Isère",email:"",groupe:"Membre du",civ:"M"},
+  {dept:"38",circo:2,name:"Cyrielle Chatelain",circ:"2e circ. — Isère",email:"cyrielle.chatelain@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"38",circo:3,name:"Élisa Martin",circ:"3e circ. — Isère",email:"elisa.martin@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"38",circo:4,name:"Marie-Noëlle Battistel",circ:"4e circ. — Isère",email:"marie-noelle.battistel@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"38",circo:5,name:"Jérémie Iordanoff",circ:"5e circ. — Isère",email:"jeremie.iordanoff@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"38",circo:6,name:"Alexis Jolly",circ:"6e circ. — Isère",email:"alexis.jolly@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"38",circo:7,name:"Yannick Neuder",circ:"7e circ. — Isère",email:"yannick.neuder@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"38",circo:8,name:"Hanane Mansouri",circ:"8e circ. — Isère",email:"hanane.mansouri@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"38",circo:9,name:"Sandrine Nosbé",circ:"9e circ. — Isère",email:"sandrine.nosbe@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"38",circo:10,name:"Thierry Perez",circ:"10e circ. — Isère",email:"thierry.perez@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"39",circo:1,name:"Danielle Brulebois",circ:"1re circ. — Jura",email:"danielle.brulebois@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"39",circo:2,name:"Marie-Christine Dalloz",circ:"2e circ. — Jura",email:"marie-christine.dalloz@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"39",circo:3,name:"Justine Gruet",circ:"3e circ. — Jura",email:"justine.gruet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"40",circo:1,name:"Geneviève Darrieussecq",circ:"1re circ. — Landes",email:"genevieve.darrieussecq@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"40",circo:2,name:"Lionel Causse",circ:"2e circ. — Landes",email:"lionel.causse@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"40",circo:3,name:"Boris Vallaud",circ:"3e circ. — Landes",email:"boris.vallaud@assemblee-nationale.fr",groupe:"Président du",civ:"M"},
+  {dept:"41",circo:1,name:"Marc Fesneau",circ:"1re circ. — Loir-et-Cher",email:"marc.fesneau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"41",circo:2,name:"Roger Chudeau",circ:"2e circ. — Loir-et-Cher",email:"roger.chudeau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"41",circo:3,name:"Christophe Marion",circ:"3e circ. — Loir-et-Cher",email:"christophe.marion@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"42",circo:1,name:"Pierrick Courbon",circ:"1re circ. — Loire",email:"pierrick.courbon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"42",circo:2,name:"Andrée Taurinya",circ:"2e circ. — Loire",email:"andree.taurinya@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"42",circo:3,name:"Emmanuel Mandon",circ:"3e circ. — Loire",email:"emmanuel.mandon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"42",circo:4,name:"Sylvie Bonnet",circ:"4e circ. — Loire",email:"sylvie.bonnet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"42",circo:5,name:"Antoine Vermorel-Marques",circ:"5e circ. — Loire",email:"antoine.vermorel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"42",circo:6,name:"Jean-Pierre Taite",circ:"6e circ. — Loire",email:"jean-pierre.taite@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"43",circo:1,name:"Laurent Wauquiez",circ:"1re circ. — Haute-Loire",email:"laurent.wauquiez@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"43",circo:2,name:"Jean-Pierre Vigier",circ:"2e circ. — Haute-Loire",email:"jean-pierre.vigier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"44",circo:1,name:"Karim Benbrahim",circ:"1re circ. — Loire-Atlantique",email:"karim.benbrahim@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"44",circo:2,name:"Andy Kerbrat",circ:"2e circ. — Loire-Atlantique",email:"andy.kerbrat@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"44",circo:3,name:"Ségolène Amiot",circ:"3e circ. — Loire-Atlantique",email:"segolene.amiot@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"44",circo:4,name:"Julie Laernoes",circ:"4e circ. — Loire-Atlantique",email:"julie.laernoes@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"44",circo:5,name:"Fabrice Roussel",circ:"5e circ. — Loire-Atlantique",email:"fabrice.roussel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"44",circo:6,name:"Jean-Claude Raux",circ:"6e circ. — Loire-Atlantique",email:"jean-claude.raux@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"44",circo:7,name:"Sandrine Josso",circ:"7e circ. — Loire-Atlantique",email:"sandrine.josso@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"44",circo:8,name:"Matthias Tavel",circ:"8e circ. — Loire-Atlantique",email:"matthias.tavel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"44",circo:9,name:"Jean-Michel Brard",circ:"9e circ. — Loire-Atlantique",email:"jean-michel.brard@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"44",circo:10,name:"Sophie Errante",circ:"10e circ. — Loire-Atlantique",email:"sophie.errante@assemblee-nationale.fr",groupe:"Député non-insc",civ:"F"},
+  {dept:"45",circo:1,name:"Marie-Philippe Lubet",circ:"1re circ. — Loiret",email:"marie-philippe.lubet@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"45",circo:2,name:"Emmanuel Duplessy",circ:"2e circ. — Loiret",email:"emmanuel.duplessy@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"45",circo:3,name:"Constance de Pélichy",circ:"3e circ. — Loiret",email:"constance.depelichy@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"45",circo:4,name:"Thomas Ménagé",circ:"4e circ. — Loiret",email:"thomas.menage@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"45",circo:5,name:"Anthony Brosse",circ:"5e circ. — Loiret",email:"anthony.brosse@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"45",circo:6,name:"Richard Ramos",circ:"6e circ. — Loiret",email:"richard.ramos@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"46",circo:1,name:"Aurélien Pradié",circ:"1re circ. — Lot",email:"aurelien.pradie@assemblee-nationale.fr",groupe:"Député non-insc",civ:"M"},
+  {dept:"46",circo:2,name:"Christophe Proença",circ:"2e circ. — Lot",email:"christophe.proenca@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"47",circo:1,name:"Michel Lauzzana",circ:"1re circ. — Lot-et-Garonne",email:"michel.lauzzana@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"47",circo:2,name:"Hélène Laporte",circ:"2e circ. — Lot-et-Garonne",email:"helene.laporte@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"47",circo:3,name:"Emeline Rey-Rinchet",circ:"3e circ. — Lot-et-Garonne",email:"emeline.rey@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"48",circo:1,name:"Sophie Pantel",circ:"1re circ. — Lozère",email:"sophie.pantel@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"49",circo:1,name:"François Gernigon",circ:"1re circ. — Maine-et-Loire",email:"francois.gernigon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"49",circo:2,name:"Stella Dupont",circ:"2e circ. — Maine-et-Loire",email:"stella.dupont@assemblee-nationale.fr",groupe:"Député non-insc",civ:"F"},
+  {dept:"49",circo:3,name:"Anne-Laure Blin",circ:"3e circ. — Maine-et-Loire",email:"anne-laure.blin@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"49",circo:4,name:"Laetitia Saint-Paul",circ:"4e circ. — Maine-et-Loire",email:"laetitia.saint-paul@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"49",circo:5,name:"Denis Masséglia",circ:"5e circ. — Maine-et-Loire",email:"denis.masseglia@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"49",circo:6,name:"Nicole Dubré-Chirat",circ:"6e circ. — Maine-et-Loire",email:"nicole.dubre-chirat@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"49",circo:7,name:"Patricia Maussion",circ:"7e circ. — Maine-et-Loire",email:"patricia.maussion@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"50",circo:1,name:"Philippe Gosselin",circ:"1re circ. — Manche",email:"philippe.gosselin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"50",circo:2,name:"Bertrand Sorre",circ:"2e circ. — Manche",email:"bertrand.sorre@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"50",circo:3,name:"Stéphane Travert",circ:"3e circ. — Manche",email:"stephane.travert@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"50",circo:4,name:"Anna Pic",circ:"4e circ. — Manche",email:"anna.pic@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"51",circo:1,name:"Xavier Albertini",circ:"1re circ. — Marne",email:"xavier.albertini@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"51",circo:2,name:"Laure Miller",circ:"2e circ. — Marne",email:"laure.miller@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"51",circo:3,name:"Maxime Michelet",circ:"3e circ. — Marne",email:"maxime.michelet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"51",circo:4,name:"Lise Magnier",circ:"4e circ. — Marne",email:"lise.magnier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"51",circo:5,name:"Charles de Courson",circ:"5e circ. — Marne",email:"charles.decourson@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"52",circo:1,name:"Christophe Bentz",circ:"1re circ. — Haute-Marne",email:"christophe.bentz@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"52",circo:2,name:"Laurence Robert-Dehault",circ:"2e circ. — Haute-Marne",email:"laurence.robert-dehault@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"53",circo:1,name:"Guillaume Garot",circ:"1re circ. — Mayenne",email:"guillaume.garot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"53",circo:2,name:"Géraldine Bannier",circ:"2e circ. — Mayenne",email:"geraldine.bannier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"53",circo:3,name:"Yannick Favennec-Bécot",circ:"3e circ. — Mayenne",email:"yannick.favennec@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"54",circo:1,name:"Estelle Mercier",circ:"1re circ. — Meurthe-et-Moselle",email:"estelle.mercier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"54",circo:2,name:"Stéphane Hablot",circ:"2e circ. — Meurthe-et-Moselle",email:"stephane.hablot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"54",circo:3,name:"Frédéric Weber",circ:"3e circ. — Meurthe-et-Moselle",email:"frederic.weber@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"54",circo:4,name:"Thibault Bazin",circ:"4e circ. — Meurthe-et-Moselle",email:"thibault.bazin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"54",circo:5,name:"Dominique Potier",circ:"5e circ. — Meurthe-et-Moselle",email:"dominique.potier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"54",circo:6,name:"Anthony Boulogne",circ:"6e circ. — Meurthe-et-Moselle",email:"anthony.boulogne@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"55",circo:1,name:"Maxime Amblard",circ:"1re circ. — Meuse",email:"maxime.amblard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"55",circo:2,name:"Florence Goulet",circ:"2e circ. — Meuse",email:"florence.goulet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"56",circo:1,name:"Michel Criaud",circ:"1re circ. — Morbihan",email:"michel.criaud@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"56",circo:2,name:"Jimmy Pahun",circ:"2e circ. — Morbihan",email:"jimmy.pahun@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"56",circo:3,name:"Nicole Le Peih",circ:"3e circ. — Morbihan",email:"nicole.lepeih@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"56",circo:4,name:"Paul Molac",circ:"4e circ. — Morbihan",email:"paul.molac@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"56",circo:5,name:"Damien Girard",circ:"5e circ. — Morbihan",email:"damien.girard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"56",circo:6,name:"Jean-Michel Jacques",circ:"6e circ. — Morbihan",email:"jean-michel.jacques@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"57",circo:1,name:"Belkhir Belhaddad",circ:"1re circ. — Moselle",email:"belkhir.belhaddad@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"57",circo:2,name:"Ludovic Mendes",circ:"2e circ. — Moselle",email:"ludovic.mendes@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"57",circo:3,name:"Nathalie Colin-Oesterlé",circ:"3e circ. — Moselle",email:"nathalie.colin-oesterle@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"57",circo:4,name:"Jérôme End",circ:"4e circ. — Moselle",email:"jerome.end@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"57",circo:5,name:"Pascal Jenft",circ:"5e circ. — Moselle",email:"pascal.jenft@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"57",circo:6,name:"Kévin Pfeffer",circ:"6e circ. — Moselle",email:"kevin.pfeffer@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"57",circo:7,name:"Alexandre Loubet",circ:"7e circ. — Moselle",email:"alexandre.loubet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"57",circo:8,name:"Laurent Jacobelli",circ:"8e circ. — Moselle",email:"laurent.jacobelli@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"57",circo:9,name:"Isabelle Rauch",circ:"9e circ. — Moselle",email:"isabelle.rauch@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"58",circo:1,name:"Perrine Goulet",circ:"1re circ. — Nièvre",email:"perrine.goulet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"58",circo:2,name:"Julien Guibert",circ:"2e circ. — Nièvre",email:"julien.guibert@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:1,name:"Aurélien Le Coq",circ:"1re circ. — Nord",email:"aurelien.lecoq@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:2,name:"Ugo Bernalicis",circ:"2e circ. — Nord",email:"ugo.bernalicis@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:3,name:"Sandra Delannoy",circ:"3e circ. — Nord",email:"sandra.delannoy@assemblee-nationale.fr",groupe:"Député non-insc",civ:"F"},
+  {dept:"59",circo:4,name:"Brigitte Liso",circ:"4e circ. — Nord",email:"brigitte.liso@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"59",circo:5,name:"Sébastien Huyghe",circ:"5e circ. — Nord",email:"sebastien.huyghe@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"59",circo:6,name:"Charlotte Parmentier-Lecocq",circ:"6e circ. — Nord",email:"charlotte.parmentier-lecocq@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"59",circo:7,name:"Félicie Gérard",circ:"7e circ. — Nord",email:"felicie.gerard@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"59",circo:8,name:"Shéhérazade Bentorki",circ:"8e circ. — Nord",email:"sheherazade.bentorki@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"59",circo:9,name:"Violette Spillebout",circ:"9e circ. — Nord",email:"violette.spillebout@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"59",circo:10,name:"Vincent Ledoux",circ:"10e circ. — Nord",email:"vincent.ledoux@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:11,name:"Roger Vicot",circ:"11e circ. — Nord",email:"roger.vicot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:12,name:"Michaël Taverne",circ:"12e circ. — Nord",email:"michael.taverne@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:13,name:"Jean Bodart",circ:"13e circ. — Nord",email:"jean.bodart@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:14,name:"Pierre Marle",circ:"14e circ. — Nord",email:"pierre.marle@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"59",circo:15,name:"Jean-Pierre Bataille",circ:"15e circ. — Nord",email:"jean-pierre.bataille@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:16,name:"Matthieu Marchio",circ:"16e circ. — Nord",email:"matthieu.marchio@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:17,name:"Thierry Tesson",circ:"17e circ. — Nord",email:"thierry.tesson@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:18,name:"Alexandre Dufosset",circ:"18e circ. — Nord",email:"alexandre.dufosset@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:19,name:"Sébastien Chenu",circ:"19e circ. — Nord",email:"sebastien.chenu@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:20,name:"Guillaume Florquin",circ:"20e circ. — Nord",email:"guillaume.florquin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"59",circo:21,name:"Valérie Létard",circ:"21e circ. — Nord",email:"valerie.letard@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"60",circo:1,name:"Claire Marais-Beuil",circ:"1re circ. — Oise",email:"claire.marais-beuil@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"60",circo:2,name:"Philippe Ballard",circ:"2e circ. — Oise",email:"philippe.ballard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"60",circo:3,name:"Alexandre Sabatou",circ:"3e circ. — Oise",email:"alexandre.sabatou@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"60",circo:4,name:"Véronique Ludmann",circ:"4e circ. — Oise",email:"veronique.ludmann@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"60",circo:5,name:"Frédéric-Pierre Vos",circ:"5e circ. — Oise",email:"fredericpierre.vos@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"60",circo:6,name:"Michel Guiniot",circ:"6e circ. — Oise",email:"michel.guiniot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"60",circo:7,name:"David Magnier",circ:"7e circ. — Oise",email:"david.magnier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"61",circo:1,name:"Chantal Jourdan",circ:"1re circ. — Orne",email:"chantal.jourdan@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"61",circo:2,name:"Thierry Liger",circ:"2e circ. — Orne",email:"thierry.liger@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"61",circo:3,name:"Cendrine Chazé",circ:"3e circ. — Orne",email:"cendrine.chaze@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"62",circo:1,name:"Emmanuel Blairy",circ:"1re circ. — Pas-de-Calais",email:"emmanuel.blairy@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"62",circo:2,name:"Agnès Pannier-Runacher",circ:"2e circ. — Pas-de-Calais",email:"agnes.pannier-runacher@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"62",circo:3,name:"Bruno Clavet",circ:"3e circ. — Pas-de-Calais",email:"bruno.clavet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"62",circo:4,name:"Philippe Fait",circ:"4e circ. — Pas-de-Calais",email:"philippe.fait@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"62",circo:5,name:"Antoine Golliot",circ:"5e circ. — Pas-de-Calais",email:"antoine.golliot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"62",circo:6,name:"Christine Engrand",circ:"6e circ. — Pas-de-Calais",email:"christine.engrand@assemblee-nationale.fr",groupe:"Député non-insc",civ:"F"},
+  {dept:"62",circo:7,name:"Marc de Fleurian",circ:"7e circ. — Pas-de-Calais",email:"marc.defleurian@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"62",circo:8,name:"Auguste Evrard",circ:"8e circ. — Pas-de-Calais",email:"auguste.evrard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"62",circo:9,name:"Caroline Parmentier",circ:"9e circ. — Pas-de-Calais",email:"caroline.parmentier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"62",circo:10,name:"Thierry Frappé",circ:"10e circ. — Pas-de-Calais",email:"thierry.frappe@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"62",circo:11,name:"Marine Le Pen",circ:"11e circ. — Pas-de-Calais",email:"marine.lepen@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"62",circo:12,name:"Bruno Bilde",circ:"12e circ. — Pas-de-Calais",email:"bruno.bilde@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"63",circo:1,name:"Marianne Maximi",circ:"1re circ. — Puy-de-Dôme",email:"marianne.maximi@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"63",circo:2,name:"Christine Pirès Beaune",circ:"2e circ. — Puy-de-Dôme",email:"christine.piresbeaune@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"63",circo:3,name:"Nicolas Bonnet",circ:"3e circ. — Puy-de-Dôme",email:"nicolas.bonnet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"63",circo:4,name:"Delphine Lingemann",circ:"4e circ. — Puy-de-Dôme",email:"delphine.lingemann@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"63",circo:5,name:"Julien Brugerolles",circ:"5e circ. — Puy-de-Dôme",email:"julien.brugerolles@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"64",circo:1,name:"Josy Poueyto",circ:"1re circ. — Pyrénées-Atlantiques",email:"josy.poueyto@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"64",circo:2,name:"Jean-Paul Mattei",circ:"2e circ. — Pyrénées-Atlantiques",email:"jean-paul.mattei@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"64",circo:3,name:"David Habib",circ:"3e circ. — Pyrénées-Atlantiques",email:"david.habib@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"64",circo:4,name:"Inaki Echaniz",circ:"4e circ. — Pyrénées-Atlantiques",email:"inaki.echaniz@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"64",circo:5,name:"Colette Capdevielle",circ:"5e circ. — Pyrénées-Atlantiques",email:"colette.capdevielle@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"64",circo:6,name:"Peio Dufau",circ:"6e circ. — Pyrénées-Atlantiques",email:"peio.dufau@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"65",circo:1,name:"Sylvie Ferrer",circ:"1re circ. — Hautes-Pyrénées",email:"sylvie.ferrer@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"65",circo:2,name:"Denis Fégné",circ:"2e circ. — Hautes-Pyrénées",email:"denis.fegne@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"66",circo:1,name:"Sophie Blanc",circ:"1re circ. — Pyrénées-Orientales",email:"sophie.blanc@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"66",circo:2,name:"Anaïs Sabatini",circ:"2e circ. — Pyrénées-Orientales",email:"anais.sabatini@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"66",circo:3,name:"Sandrine Dogor-Such",circ:"3e circ. — Pyrénées-Orientales",email:"sandrine.dogor-such@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"66",circo:4,name:"Michèle Martinez",circ:"4e circ. — Pyrénées-Orientales",email:"michele.martinez@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"67",circo:1,name:"Sandra Regol",circ:"1re circ. — Bas-Rhin",email:"sandra.regol@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"67",circo:2,name:"Emmanuel Fernandes",circ:"2e circ. — Bas-Rhin",email:"emmanuel.fernandes@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"67",circo:3,name:"Thierry Sother",circ:"3e circ. — Bas-Rhin",email:"thierry.sother@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"67",circo:4,name:"Françoise Buffet",circ:"4e circ. — Bas-Rhin",email:"francoise.buffet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"67",circo:5,name:"Charles Sitzenstuhl",circ:"5e circ. — Bas-Rhin",email:"charles.sitzenstuhl@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"67",circo:6,name:"Louise Morel",circ:"6e circ. — Bas-Rhin",email:"louise.morel@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"67",circo:7,name:"Patrick Hetzel",circ:"7e circ. — Bas-Rhin",email:"patrick.hetzel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"67",circo:8,name:"Théo Bernhardt",circ:"8e circ. — Bas-Rhin",email:"theo.bernhardt@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"67",circo:9,name:"Vincent Thiébaut",circ:"9e circ. — Bas-Rhin",email:"vincent.thiebaut@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"68",circo:1,name:"Brigitte Klinkert",circ:"1re circ. — Haut-Rhin",email:"brigitte.klinkert@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"68",circo:2,name:"Hubert Ott",circ:"2e circ. — Haut-Rhin",email:"hubert.ott@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"68",circo:3,name:"Didier Lemaire",circ:"3e circ. — Haut-Rhin",email:"didier.lemaire@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"68",circo:4,name:"Raphaël Schellenberger",circ:"4e circ. — Haut-Rhin",email:"raphael.schellenberger@assemblee-nationale.fr",groupe:"Député non-insc",civ:"M"},
+  {dept:"68",circo:5,name:"Olivier Becht",circ:"5e circ. — Haut-Rhin",email:"olivier.becht@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"68",circo:6,name:"Bruno Fuchs",circ:"6e circ. — Haut-Rhin",email:"bruno.fuchs@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:1,name:"Anaïs Belouassa-Cherifi",circ:"1re circ. — Rhône",email:"anais.belouassa@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"69",circo:2,name:"Boris Tavernier",circ:"2e circ. — Rhône",email:"boris.tavernier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:3,name:"Marie-Charlotte Garin",circ:"3e circ. — Rhône",email:"marie-charlotte.garin@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"69",circo:4,name:"Sandrine Runel",circ:"4e circ. — Rhône",email:"sandrine.runel@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"69",circo:5,name:"Blandine Brocard",circ:"5e circ. — Rhône",email:"blandine.brocard@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"69",circo:6,name:"Gabriel Amard",circ:"6e circ. — Rhône",email:"gabriel.amard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:7,name:"Abdelkader Lahmar",circ:"7e circ. — Rhône",email:"abdelkader.lahmar@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:8,name:"Jonathan Gery",circ:"8e circ. — Rhône",email:"jonathan.gery@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:9,name:"Alexandre Portier",circ:"9e circ. — Rhône",email:"alexandre.portier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:10,name:"Thomas Gassilloud",circ:"10e circ. — Rhône",email:"thomas.gassilloud@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:11,name:"Jean-Luc Fugit",circ:"11e circ. — Rhône",email:"jean-luc.fugit@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:12,name:"Cyrille Isaac-Sibille",circ:"12e circ. — Rhône",email:"cyrille.isaac-sibille@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"69",circo:13,name:"Tiffany Joncour",circ:"13e circ. — Rhône",email:"tiffany.joncour@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"69",circo:14,name:"Idir Boumertit",circ:"14e circ. — Rhône",email:"idir.boumertit@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"70",circo:1,name:"Antoine Villedieu",circ:"1re circ. — Haute-Saône",email:"antoine.villedieu@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"70",circo:2,name:"Emeric Salmon",circ:"2e circ. — Haute-Saône",email:"emeric.salmon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"71",circo:1,name:"Benjamin Dirx",circ:"1re circ. — Saône-et-Loire",email:"benjamin.dirx@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"71",circo:2,name:"Josiane Corneloup",circ:"2e circ. — Saône-et-Loire",email:"josiane.corneloup@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"71",circo:3,name:"Aurélien Dutremble",circ:"3e circ. — Saône-et-Loire",email:"aurelien.dutremble@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"71",circo:4,name:"Éric Michoux",circ:"4e circ. — Saône-et-Loire",email:"eric.michoux@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"71",circo:5,name:"Lionel Duparay",circ:"5e circ. — Saône-et-Loire",email:"lionel.duparay@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"72",circo:1,name:"Julie Delpech",circ:"1re circ. — Sarthe",email:"julie.delpech@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"72",circo:2,name:"Marietta Karamanli",circ:"2e circ. — Sarthe",email:"marietta.karamanli@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"72",circo:3,name:"Éric Martineau",circ:"3e circ. — Sarthe",email:"eric.martineau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"72",circo:4,name:"Élise Leboucher",circ:"4e circ. — Sarthe",email:"elise.leboucher@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"72",circo:5,name:"Jean-Carles Grelier",circ:"5e circ. — Sarthe",email:"jean-carles.grelier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"73",circo:1,name:"Didier Padey",circ:"1re circ. — Savoie",email:"didier.padey@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"73",circo:2,name:"Vincent Rolland",circ:"2e circ. — Savoie",email:"vincent.rolland@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"73",circo:3,name:"Émilie Bonnivard",circ:"3e circ. — Savoie",email:"emilie.bonnivard@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"73",circo:4,name:"Jean-François Coulomme",circ:"4e circ. — Savoie",email:"jean-francois.coulomme@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"74",circo:1,name:"Véronique Riotton",circ:"1re circ. — Haute-Savoie",email:"veronique.riotton@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"74",circo:2,name:"Danièle Carteron",circ:"2e circ. — Haute-Savoie",email:"daniele.carteron@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"74",circo:3,name:"Antoine Valentin",circ:"3e circ. — Haute-Savoie",email:"antoine.valentin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"74",circo:4,name:"Virginie Duby-Muller",circ:"4e circ. — Haute-Savoie",email:"virginie.duby-muller@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"74",circo:5,name:"Anne-Cécile Violland",circ:"5e circ. — Haute-Savoie",email:"anne-cecile.violland@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"74",circo:6,name:"Xavier Roseren",circ:"6e circ. — Haute-Savoie",email:"xavier.roseren@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"75",circo:1,name:"Sylvain Maillard",circ:"1re circ. — Paris",email:"sylvain.maillard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"75",circo:2,name:"Michel Barnier",circ:"2e circ. — Paris",email:"michel.barnier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"75",circo:3,name:"Léa Balage El Mariky",circ:"3e circ. — Paris",email:"lea.balage@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:4,name:"Astrid Panosyan-Bouvet",circ:"4e circ. — Paris",email:"astrid.panosyan-bouvet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:5,name:"Pouria Amirshahi",circ:"5e circ. — Paris",email:"pouria.amirshahi@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"75",circo:6,name:"Sophia Chikirou",circ:"6e circ. — Paris",email:"sophia.chikirou@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:7,name:"Dorine Bregman",circ:"7e circ. — Paris",email:"dorine.bregman@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:8,name:"Eva Sas",circ:"8e circ. — Paris",email:"eva.sas@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:9,name:"Sandrine Rousseau",circ:"9e circ. — Paris",email:"sandrine.rousseau@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:10,name:"Rodrigo Arenas",circ:"10e circ. — Paris",email:"rodrigo.arenas@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"75",circo:11,name:"Céline Hervieu",circ:"11e circ. — Paris",email:"celine.hervieu@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:12,name:"Olivia Grégoire",circ:"12e circ. — Paris",email:"olivia.gregoire@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:13,name:"Catherine Ibled",circ:"13e circ. — Paris",email:"catherine.ibled@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:14,name:"Joséphine Missoffe",circ:"14e circ. — Paris",email:"josephine.missoffe@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:15,name:"Danielle Simonnet",circ:"15e circ. — Paris",email:"danielle.simonnet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:16,name:"Sarah Legrain",circ:"16e circ. — Paris",email:"sarah.legrain@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:17,name:"Danièle Obono",circ:"17e circ. — Paris",email:"daniele.obono@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"75",circo:18,name:"Aymeric Caron",circ:"18e circ. — Paris",email:"aymeric.caron@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"76",circo:1,name:"Florence Herouin-Léautey",circ:"1re circ. — Seine-Maritime",email:"florence.herouin-leautey@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"76",circo:2,name:"Annie Vidal",circ:"2e circ. — Seine-Maritime",email:"annie.vidal@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"76",circo:3,name:"Édouard Bénard",circ:"3e circ. — Seine-Maritime",email:"edouard.benard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"76",circo:4,name:"Alma Dufour",circ:"4e circ. — Seine-Maritime",email:"alma.dufour@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"76",circo:5,name:"Gérard Leseul",circ:"5e circ. — Seine-Maritime",email:"gerard.leseul@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"76",circo:6,name:"Patrice Martin",circ:"6e circ. — Seine-Maritime",email:"patrice.martin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"76",circo:7,name:"Agnès Firmin Le Bodo",circ:"7e circ. — Seine-Maritime",email:"agnes.firminlebodo@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"76",circo:8,name:"Jean-Paul Lecoq",circ:"8e circ. — Seine-Maritime",email:"jean-paul.lecoq@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"76",circo:9,name:"Marie-Agnès Poussier-Winsback",circ:"9e circ. — Seine-Maritime",email:"marieagnes.poussier-winsback@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"76",circo:10,name:"Robert Le Bourgeois",circ:"10e circ. — Seine-Maritime",email:"robert.lebourgeois@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"77",circo:1,name:"Arnaud Saint-Martin",circ:"1re circ. — Seine-et-Marne",email:"arnaud.saint-martin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"77",circo:2,name:"Frédéric Valletoux",circ:"2e circ. — Seine-et-Marne",email:"frederic.valletoux@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"77",circo:3,name:"Jean-Louis Thiériot",circ:"3e circ. — Seine-et-Marne",email:"jean-louis.thieriot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"77",circo:4,name:"Julien Limongi",circ:"4e circ. — Seine-et-Marne",email:"julien.limongi@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"77",circo:5,name:"Patricia Lemoine",circ:"5e circ. — Seine-et-Marne",email:"patricia.lemoine@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"77",circo:6,name:"Béatrice Roullaud",circ:"6e circ. — Seine-et-Marne",email:"beatrice.roullaud@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"77",circo:7,name:"Ersilia Soudais",circ:"7e circ. — Seine-et-Marne",email:"ersilia.soudais@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"77",circo:8,name:"Arnaud Bonnet",circ:"8e circ. — Seine-et-Marne",email:"arnaud.bonnet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"77",circo:9,name:"Céline Thiébault-Martinez",circ:"9e circ. — Seine-et-Marne",email:"celine.thiebault-martinez@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"77",circo:10,name:"Maxime Laisney",circ:"10e circ. — Seine-et-Marne",email:"maxime.laisney@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"77",circo:11,name:"Olivier Faure",circ:"11e circ. — Seine-et-Marne",email:"olivier.faure@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"78",circo:1,name:"Charles Rodwell",circ:"1re circ. — Yvelines",email:"charles.rodwell@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"78",circo:2,name:"Anne Bergantz",circ:"2e circ. — Yvelines",email:"anne.bergantz@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"78",circo:3,name:"Béatrice Piron",circ:"3e circ. — Yvelines",email:"beatrice.piron@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"78",circo:4,name:"Marie Lebec",circ:"4e circ. — Yvelines",email:"marie.lebec@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"78",circo:5,name:"Yaël Braun-Pivet",circ:"5e circ. — Yvelines",email:"yael.braun-pivet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"78",circo:6,name:"Natalia Pouzyreff",circ:"6e circ. — Yvelines",email:"natalia.pouzyreff@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"78",circo:7,name:"Aurélien Rousseau",circ:"7e circ. — Yvelines",email:"aurelien.rousseau@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"78",circo:8,name:"Benjamin Lucas-Lundy",circ:"8e circ. — Yvelines",email:"benjamin.lucas@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"78",circo:9,name:"Dieynaba Diop",circ:"9e circ. — Yvelines",email:"dieynaba.diop@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"78",circo:10,name:"Anne-Sophie Ronceret",circ:"10e circ. — Yvelines",email:"anne-sophie.ronceret@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"78",circo:11,name:"Laurent Mazaury",circ:"11e circ. — Yvelines",email:"laurent.mazaury@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"78",circo:12,name:"Karl Olive",circ:"12e circ. — Yvelines",email:"karl.olive@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"79",circo:1,name:"Bastien Marchive",circ:"1re circ. — Deux-Sèvres",email:"bastien.marchive@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"79",circo:2,name:"Delphine Batho",circ:"2e circ. — Deux-Sèvres",email:"delphine.batho@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"79",circo:3,name:"Jean-Marie Fiévet",circ:"3e circ. — Deux-Sèvres",email:"jean-marie.fievet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"80",circo:1,name:"François Ruffin",circ:"1re circ. — Somme",email:"francois.ruffin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"80",circo:2,name:"Zahia Hamdane",circ:"2e circ. — Somme",email:"zahia.hamdane@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"80",circo:3,name:"Matthias Renault",circ:"3e circ. — Somme",email:"matthias.renault@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"80",circo:4,name:"Jean-Philippe Tanguy",circ:"4e circ. — Somme",email:"jean-philippe.tanguy@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"80",circo:5,name:"Yaël Ménaché",circ:"5e circ. — Somme",email:"yael.menache@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"81",circo:1,name:"Philippe Bonnecarrère",circ:"1re circ. — Tarn",email:"philippe.bonnecarrere@assemblee-nationale.fr",groupe:"Député non-insc",civ:"M"},
+  {dept:"81",circo:2,name:"Karen Erodi",circ:"2e circ. — Tarn",email:"karen.erodi@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"81",circo:3,name:"Jean Terlier",circ:"3e circ. — Tarn",email:"jean.terlier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"82",circo:1,name:"Pierre-Henri Carbonnel",circ:"1re circ. — Tarn-et-Garonne",email:"pierre-henri.carbonnel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"82",circo:2,name:"Marine Hamelet",circ:"2e circ. — Tarn-et-Garonne",email:"marine.hamelet@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"83",circo:1,name:"Yannick Chenevard",circ:"1re circ. — Var",email:"yannick.chenevard@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"83",circo:2,name:"Laure Lavalette",circ:"2e circ. — Var",email:"laure.lavalette@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"83",circo:3,name:"Stéphane Rambaud",circ:"3e circ. — Var",email:"stephane.rambaud@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"83",circo:4,name:"Philippe Lottiaux",circ:"4e circ. — Var",email:"philippe.lottiaux@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"83",circo:5,name:"Julie Lechanteux",circ:"5e circ. — Var",email:"julie.lechanteux@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"83",circo:6,name:"Frank Giletti",circ:"6e circ. — Var",email:"frank.giletti@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"83",circo:7,name:"Frédéric Boccaletti",circ:"7e circ. — Var",email:"frederic.boccaletti@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"83",circo:8,name:"Philippe Schreck",circ:"8e circ. — Var",email:"philippe.schreck@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"84",circo:1,name:"Raphaël Arnault",circ:"1re circ. — Vaucluse",email:"raphael.arnault@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"84",circo:2,name:"Bénédicte Auzanot",circ:"2e circ. — Vaucluse",email:"benedicte.auzanot@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"84",circo:3,name:"Hervé de Lépinau",circ:"3e circ. — Vaucluse",email:"herve.delepinau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"84",circo:4,name:"Marie-France Lorho",circ:"4e circ. — Vaucluse",email:"marie-france.lorho@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"84",circo:5,name:"Catherine Rimbert",circ:"5e circ. — Vaucluse",email:"catherine.rimbert@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"85",circo:1,name:"Philippe Latombe",circ:"1re circ. — Vendée",email:"philippe.latombe@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"85",circo:2,name:"Béatrice Bellamy",circ:"2e circ. — Vendée",email:"beatrice.bellamy@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"85",circo:3,name:"Stéphane Buchou",circ:"3e circ. — Vendée",email:"stephane.buchou@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"85",circo:4,name:"Véronique Besse",circ:"4e circ. — Vendée",email:"veronique.besse@assemblee-nationale.fr",groupe:"Député non-insc",civ:"F"},
+  {dept:"85",circo:5,name:"Pierre Henriet",circ:"5e circ. — Vendée",email:"pierre.henriet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"86",circo:1,name:"Lisa Belluco",circ:"1re circ. — Vienne",email:"lisa.belluco@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"86",circo:2,name:"Sacha Houlié",circ:"2e circ. — Vienne",email:"sacha.houlie@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"86",circo:3,name:"Pascal Lecamp",circ:"3e circ. — Vienne",email:"pascal.lecamp@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"86",circo:4,name:"Nicolas Turquois",circ:"4e circ. — Vienne",email:"nicolas.turquois@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"87",circo:1,name:"Damien Maudet",circ:"1re circ. — Haute-Vienne",email:"damien.maudet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"87",circo:2,name:"Stéphane Delautrette",circ:"2e circ. — Haute-Vienne",email:"stephane.delautrette@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"87",circo:3,name:"Manon Meunier",circ:"3e circ. — Haute-Vienne",email:"manon.meunier@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"88",circo:1,name:"Stéphane Viry",circ:"1re circ. — Vosges",email:"stephane.viry@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"88",circo:2,name:"Gaëtan Dussausaye",circ:"2e circ. — Vosges",email:"gaetan.dussausaye@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"88",circo:3,name:"Christophe Naegelen",circ:"3e circ. — Vosges",email:"christophe.naegelen@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"88",circo:4,name:"Sébastien Humbert",circ:"4e circ. — Vosges",email:"sebastien.humbert@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"89",circo:1,name:"Daniel Grenon",circ:"1re circ. — Yonne",email:"daniel.grenon@assemblee-nationale.fr",groupe:"Député non-insc",civ:"M"},
+  {dept:"89",circo:2,name:"Sophie-Laurence Roy",circ:"2e circ. — Yonne",email:"sophie-laurence.roy@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"89",circo:3,name:"Julien Odoul",circ:"3e circ. — Yonne",email:"julien.odoul@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"90",circo:1,name:"Ian Boucard",circ:"1re circ. — Territoire de Belfort",email:"ian.boucard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"90",circo:2,name:"Guillaume Bigot",circ:"2e circ. — Territoire de Belfort",email:"guillaume.bigot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"91",circo:1,name:"Farida Amrani",circ:"1re circ. — Essonne",email:"farida.amrani@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"91",circo:2,name:"Nathalie Da Conceicao Carvalho",circ:"2e circ. — Essonne",email:"nathalie.daconceicaocarvalho@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"91",circo:3,name:"Steevy Gustave",circ:"3e circ. — Essonne",email:"steevy.gustave@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"91",circo:4,name:"Marie-Pierre Rixain",circ:"4e circ. — Essonne",email:"marie-pierre.rixain@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"91",circo:5,name:"Paul Midy",circ:"5e circ. — Essonne",email:"paul.midy@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"91",circo:6,name:"Jérôme Guedj",circ:"6e circ. — Essonne",email:"jerome.guedj@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"91",circo:7,name:"Claire Lejeune",circ:"7e circ. — Essonne",email:"claire.lejeune@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"91",circo:8,name:"Bérenger Cernon",circ:"8e circ. — Essonne",email:"berenger.cernon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"91",circo:9,name:"Julie Ozenne",circ:"9e circ. — Essonne",email:"julie.ozenne@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"91",circo:10,name:"Antoine Léaument",circ:"10e circ. — Essonne",email:"antoine.leaument@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"92",circo:1,name:"Elsa Faucillon",circ:"1re circ. — Hauts-de-Seine",email:"elsa.faucillon@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"92",circo:2,name:"Thomas Lam",circ:"2e circ. — Hauts-de-Seine",email:"thomas.lam@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"92",circo:3,name:"Philippe Juvin",circ:"3e circ. — Hauts-de-Seine",email:"philippe.juvin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"92",circo:4,name:"Sabrina Sebaihi",circ:"4e circ. — Hauts-de-Seine",email:"sabrina.sebaihi@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"92",circo:5,name:"Céline Calvez",circ:"5e circ. — Hauts-de-Seine",email:"celine.calvez@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"92",circo:6,name:"Constance Le Grip",circ:"6e circ. — Hauts-de-Seine",email:"constance.legrip@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"92",circo:7,name:"Pierre Cazeneuve",circ:"7e circ. — Hauts-de-Seine",email:"pierre.cazeneuve@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"92",circo:8,name:"Prisca Thevenot",circ:"8e circ. — Hauts-de-Seine",email:"prisca.thevenot@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"92",circo:9,name:"Élisabeth de Maistre",circ:"9e circ. — Hauts-de-Seine",email:"elisabeth.demaistre@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"92",circo:10,name:"Gabriel Attal",circ:"10e circ. — Hauts-de-Seine",email:"gabriel.attal@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"92",circo:11,name:"Aurélien Saintoul",circ:"11e circ. — Hauts-de-Seine",email:"aurelien.saintoul@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"92",circo:12,name:"Carole Guillerm",circ:"12e circ. — Hauts-de-Seine",email:"carole.guillerm@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"92",circo:13,name:"Christophe Mongardien",circ:"13e circ. — Hauts-de-Seine",email:"christophe.mongardien@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"93",circo:1,name:"Éric Coquerel",circ:"1re circ. — Seine-Saint-Denis",email:"eric.coquerel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"93",circo:2,name:"Stéphane Peu",circ:"2e circ. — Seine-Saint-Denis",email:"stephane.peu@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"93",circo:3,name:"Thomas Portes",circ:"3e circ. — Seine-Saint-Denis",email:"thomas.portes@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"93",circo:4,name:"Soumya Bourouaha",circ:"4e circ. — Seine-Saint-Denis",email:"soumya.bourouaha@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"93",circo:5,name:"Aly Diouara",circ:"5e circ. — Seine-Saint-Denis",email:"aly.diouara@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"93",circo:6,name:"Bastien Lachaud",circ:"6e circ. — Seine-Saint-Denis",email:"bastien.lachaud@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"93",circo:7,name:"Alexis Corbière",circ:"7e circ. — Seine-Saint-Denis",email:"alexis.corbiere@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"93",circo:8,name:"Fatiha Keloua Hachi",circ:"8e circ. — Seine-Saint-Denis",email:"fatiha.kelouahachi@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"93",circo:9,name:"Aurélie Trouvé",circ:"9e circ. — Seine-Saint-Denis",email:"aurelie.trouve@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"93",circo:10,name:"Nadège Abomangoli",circ:"10e circ. — Seine-Saint-Denis",email:"nadege.abomangoli@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"93",circo:11,name:"Clémentine Autain",circ:"11e circ. — Seine-Saint-Denis",email:"clementine.autain@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"93",circo:12,name:"Jérôme Legavre",circ:"12e circ. — Seine-Saint-Denis",email:"jerome.legavre@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"94",circo:1,name:"Sylvain Berrios",circ:"1re circ. — Val-de-Marne",email:"sylvain.berrios@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"94",circo:2,name:"Clémence Guetté",circ:"2e circ. — Val-de-Marne",email:"clemence.guette@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"94",circo:3,name:"Louis Boyard",circ:"3e circ. — Val-de-Marne",email:"louis.boyard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"94",circo:4,name:"Maud Petit",circ:"4e circ. — Val-de-Marne",email:"maud.petit@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"94",circo:5,name:"Sandrine Lalanne",circ:"5e circ. — Val-de-Marne",email:"sandrine.lalanne@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"94",circo:6,name:"Guillaume Gouffier Valente",circ:"6e circ. — Val-de-Marne",email:"guillaume.gouffier-valente@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"94",circo:7,name:"Nicolas Tryzna",circ:"7e circ. — Val-de-Marne",email:"nicolas.tryzna@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"94",circo:8,name:"Michel Herbillon",circ:"8e circ. — Val-de-Marne",email:"michel.herbillon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"94",circo:9,name:"Isabelle Santiago",circ:"9e circ. — Val-de-Marne",email:"isabelle.santiago@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"94",circo:10,name:"Mathilde Panot",circ:"10e circ. — Val-de-Marne",email:"mathilde.panot@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"94",circo:11,name:"Sophie Taillé-Polian",circ:"11e circ. — Val-de-Marne",email:"sophie.taille-polian@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"95",circo:1,name:"Anne Sicard",circ:"1re circ. — Val-d'Oise",email:"anne.sicard@assemblee-nationale.fr",groupe:"Apparenté au",civ:"F"},
+  {dept:"95",circo:2,name:"Ayda Hadizadeh",circ:"2e circ. — Val-d'Oise",email:"ayda.hadizadeh@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"95",circo:3,name:"Emmanuel Maurel",circ:"3e circ. — Val-d'Oise",email:"emmanuel.maurel@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"95",circo:4,name:"Benoît Blanchard",circ:"4e circ. — Val-d'Oise",email:"benoit.blanchard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"95",circo:5,name:"Paul Vannier",circ:"5e circ. — Val-d'Oise",email:"paul.vannier@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"95",circo:6,name:"Gabrielle Cathala",circ:"6e circ. — Val-d'Oise",email:"gabrielle.cathala@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"95",circo:7,name:"Romain Eskenazi",circ:"7e circ. — Val-d'Oise",email:"romain.eskenazi@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"95",circo:8,name:"Carlos Martens Bilongo",circ:"8e circ. — Val-d'Oise",email:"carlosmartens.bilongo@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"95",circo:9,name:"Arnaud Le Gall",circ:"9e circ. — Val-d'Oise",email:"arnaud.legall@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"95",circo:10,name:"Aurélien Taché",circ:"10e circ. — Val-d'Oise",email:"aurelien.tache@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"971",circo:1,name:"Olivier Serva",circ:"1re circ. — Guadeloupe",email:"olivier.serva@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"971",circo:2,name:"Christian Baptiste",circ:"2e circ. — Guadeloupe",email:"christian.baptiste@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"971",circo:3,name:"Max Mathiasin",circ:"3e circ. — Guadeloupe",email:"max.mathiasin@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"971",circo:4,name:"Elie Califer",circ:"4e circ. — Guadeloupe",email:"elie.califer@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"972",circo:1,name:"Jiovanny William",circ:"1re circ. — Martinique",email:"jiovanny.william@assemblee-nationale.fr",groupe:"Apparenté au",civ:"M"},
+  {dept:"972",circo:2,name:"Marcellin Nadeau",circ:"2e circ. — Martinique",email:"marcellin.nadeau@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"972",circo:3,name:"Béatrice Bellay",circ:"3e circ. — Martinique",email:"beatrice.bellay@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"972",circo:4,name:"Jean-Philippe Nilor",circ:"4e circ. — Martinique",email:"jean-philippe.nilor@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"973",circo:1,name:"Jean-Victor Castor",circ:"1re circ. — Guyane",email:"jean-victor.castor@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"973",circo:2,name:"Davy Rimane",circ:"2e circ. — Guyane",email:"davy.rimane@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"974",circo:1,name:"Philippe Naillet",circ:"1re circ. — Réunion",email:"philippe.naillet@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"974",circo:2,name:"Karine Lebon",circ:"2e circ. — Réunion",email:"karine.lebon@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"974",circo:3,name:"Joseph Rivière",circ:"3e circ. — Réunion",email:"joseph.riviere@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"974",circo:4,name:"Émeline K/Bidi",circ:"4e circ. — Réunion",email:"emeline.kbidi@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"974",circo:5,name:"Jean-Hugues Ratenon",circ:"5e circ. — Réunion",email:"jean-hugues.ratenon@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"974",circo:6,name:"Frédéric Maillot",circ:"6e circ. — Réunion",email:"frederic.maillot@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"974",circo:7,name:"Perceval Gaillard",circ:"7e circ. — Réunion",email:"perceval.gaillard@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"975",circo:1,name:"Stéphane Lenormand",circ:"1re circ. — Saint-Pierre-et-Miquelon",email:"stephane.lenormand@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"976",circo:1,name:"Estelle Youssouffa",circ:"1re circ. — Mayotte",email:"estelle.youssouffa@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"976",circo:2,name:"Anchya Bamana",circ:"2e circ. — Mayotte",email:"anchya.bamana@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"977",circo:1,name:"Frantz Gumbs",circ:"1re circ. — Saint-Barthélemy et Saint-Martin",email:"frantz.gumbs@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"986",circo:1,name:"Mikaele Seo",circ:"1re circ. — Wallis-et-Futuna",email:"mikaele.seo@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"987",circo:1,name:"Moerani Frébault",circ:"1re circ. — Polynésie Française",email:"moerani.frebault@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"987",circo:2,name:"Nicole Sanquer",circ:"2e circ. — Polynésie Française",email:"nicole.sanquer@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"987",circo:3,name:"Mereana Reid Arbelot",circ:"3e circ. — Polynésie Française",email:"mereana.reidarbelot@assemblee-nationale.fr",groupe:"Membre du",civ:"F"},
+  {dept:"988",circo:1,name:"Nicolas Metzdorf",circ:"1re circ. — Nouvelle-Calédonie",email:"nicolas.metzdorf@assemblee-nationale.fr",groupe:"Membre du",civ:"M"},
+  {dept:"988",circo:2,name:"Emmanuel Tjibaou",circ:"2e circ. — Nouvelle-Calédonie",email:"emmanuel.tjibaou@assemblee-nationale.fr",groupe:"Membre du",civ:"M"}
+];
+
+
+const DEPUTIES_ETRANGER = [{"circo": 1, "name": "Christopher Weissberg", "email": "christopher.weissberg@assemblee-nationale.fr", "groupe": "RE", "zone": "Amérique du Nord", "pays": ["Canada", "États-Unis"]}, {"circo": 2, "name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "zone": "Amériques", "pays": ["Antigua-et-Barbuda", "Argentine", "Bahamas", "Barbade", "Belize", "Bolivie", "Brésil", "Chili", "Colombie", "Costa Rica", "Cuba", "Dominique", "Équateur", "Grenade", "Guatemala", "Guyana", "Haïti", "Honduras", "Jamaïque", "Mexique", "Nicaragua", "Panama", "Paraguay", "Pérou", "République dominicaine", "Saint-Christophe-et-Niévès", "Sainte-Lucie", "Saint-Vincent-et-les-Grenadines", "Salvador", "Suriname", "Trinité-et-Tobago", "Uruguay", "Venezuela"]}, {"circo": 3, "name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "zone": "Europe du Nord", "pays": ["Danemark", "Estonie", "Finlande", "Irlande", "Islande", "Lettonie", "Lituanie", "Norvège", "Royaume-Uni", "Suède"]}, {"circo": 4, "name": "Pieyre-Alexandre Anglade", "email": "pieyre-alexandre.anglade@assemblee-nationale.fr", "groupe": "RE", "zone": "Benelux", "pays": ["Belgique", "Luxembourg", "Pays-Bas"]}, {"circo": 5, "name": "Nathalie Coggia", "email": "nathalie.coggia@assemblee-nationale.fr", "groupe": "RN", "zone": "Europe du Sud-Ouest", "pays": ["Andorre", "Espagne", "Monaco", "Portugal"]}, {"circo": 6, "name": "Marie-Ange Rousselot", "email": "marie-ange.rousselot@assemblee-nationale.fr", "groupe": "RE", "zone": "Suisse", "pays": ["Liechtenstein", "Suisse"]}, {"circo": 7, "name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "zone": "Europe centrale", "pays": ["Albanie", "Allemagne", "Autriche", "Bosnie-Herzégovine", "Bulgarie", "Croatie", "Hongrie", "Kosovo", "Macédoine du Nord", "Monténégro", "Pologne", "République tchèque", "Roumanie", "Serbie", "Slovaquie", "Slovénie"]}, {"circo": 8, "name": "Caroline Yadan", "email": "caroline.yadan@assemblee-nationale.fr", "groupe": "RE", "zone": "Méditerranée orientale", "pays": ["Chypre", "Grèce", "Israël", "Italie", "Malte", "Turquie"]}, {"circo": 9, "name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "zone": "Afrique du Nord & Ouest", "pays": ["Algérie", "Bénin", "Burkina Faso", "Cap-Vert", "Côte d'Ivoire", "Gambie", "Ghana", "Guinée", "Guinée-Bissau", "Liberia", "Mali", "Maroc", "Mauritanie", "Niger", "Nigeria", "Sénégal", "Sierra Leone", "Togo", "Tunisie"]}, {"circo": 10, "name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "zone": "Afrique & Moyen-Orient", "pays": ["Afrique du Sud", "Angola", "Arabie saoudite", "Bahreïn", "Botswana", "Burundi", "Cameroun", "Centrafrique", "Comores", "Congo", "Djibouti", "Égypte", "Émirats arabes unis", "Érythrée", "Éthiopie", "Gabon", "Guinée équatoriale", "Irak", "Iran", "Jordanie", "Kenya", "Koweït", "Liban", "Lesotho", "Libye", "Madagascar", "Malawi", "Maurice", "Mozambique", "Namibie", "Oman", "Ouganda", "Palestine", "Qatar", "République démocratique du Congo", "Rwanda", "São Tomé-et-Príncipe", "Seychelles", "Somalie", "Soudan", "Soudan du Sud", "Syrie", "Tanzanie", "Tchad", "Yémen", "Zambie", "Zimbabwe"]}, {"circo": 11, "name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "zone": "Asie & Océanie", "pays": ["Afghanistan", "Australie", "Bangladesh", "Bhoutan", "Birmanie", "Brunei", "Cambodge", "Chine", "Corée du Nord", "Corée du Sud", "Estonie", "Fidji", "Inde", "Indonésie", "Japon", "Kiribati", "Laos", "Lettonie", "Lituanie", "Malaisie", "Maldives", "Marshall", "Micronésie", "Mongolie", "Nauru", "Népal", "Nouvelle-Zélande", "Palaos", "Pakistan", "Papouasie-Nouvelle-Guinée", "Philippines", "Russie", "Salomon", "Samoa", "Singapour", "Sri Lanka", "Taïwan", "Thaïlande", "Timor oriental", "Tonga", "Tuvalu", "Ukraine", "Vanuatu", "Vietnam"]}];
+const PAYS_TO_DEPUTY = {"Canada": {"name": "Christopher Weissberg", "email": "christopher.weissberg@assemblee-nationale.fr", "groupe": "RE", "circ": "1e circ. — Amérique du Nord", "zone": "Amérique du Nord"}, "États-Unis": {"name": "Christopher Weissberg", "email": "christopher.weissberg@assemblee-nationale.fr", "groupe": "RE", "circ": "1e circ. — Amérique du Nord", "zone": "Amérique du Nord"}, "Antigua-et-Barbuda": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Argentine": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Bahamas": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Barbade": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Belize": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Bolivie": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Brésil": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Chili": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Colombie": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Costa Rica": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Cuba": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Dominique": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Équateur": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Grenade": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Guatemala": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Guyana": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Haïti": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Honduras": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Jamaïque": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Mexique": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Nicaragua": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Panama": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Paraguay": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Pérou": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "République dominicaine": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Saint-Christophe-et-Niévès": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Sainte-Lucie": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Saint-Vincent-et-les-Grenadines": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Salvador": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Suriname": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Trinité-et-Tobago": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Uruguay": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Venezuela": {"name": "Éléonore Caroit", "email": "eleonore.caroit@assemblee-nationale.fr", "groupe": "RE", "circ": "2e circ. — Amériques", "zone": "Amériques"}, "Danemark": {"name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "circ": "3e circ. — Europe du Nord", "zone": "Europe du Nord"}, "Estonie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Finlande": {"name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "circ": "3e circ. — Europe du Nord", "zone": "Europe du Nord"}, "Irlande": {"name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "circ": "3e circ. — Europe du Nord", "zone": "Europe du Nord"}, "Islande": {"name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "circ": "3e circ. — Europe du Nord", "zone": "Europe du Nord"}, "Lettonie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Lituanie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Norvège": {"name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "circ": "3e circ. — Europe du Nord", "zone": "Europe du Nord"}, "Royaume-Uni": {"name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "circ": "3e circ. — Europe du Nord", "zone": "Europe du Nord"}, "Suède": {"name": "Vincent Caure", "email": "vincent.caure@assemblee-nationale.fr", "groupe": "RN", "circ": "3e circ. — Europe du Nord", "zone": "Europe du Nord"}, "Belgique": {"name": "Pieyre-Alexandre Anglade", "email": "pieyre-alexandre.anglade@assemblee-nationale.fr", "groupe": "RE", "circ": "4e circ. — Benelux", "zone": "Benelux"}, "Luxembourg": {"name": "Pieyre-Alexandre Anglade", "email": "pieyre-alexandre.anglade@assemblee-nationale.fr", "groupe": "RE", "circ": "4e circ. — Benelux", "zone": "Benelux"}, "Pays-Bas": {"name": "Pieyre-Alexandre Anglade", "email": "pieyre-alexandre.anglade@assemblee-nationale.fr", "groupe": "RE", "circ": "4e circ. — Benelux", "zone": "Benelux"}, "Andorre": {"name": "Nathalie Coggia", "email": "nathalie.coggia@assemblee-nationale.fr", "groupe": "RN", "circ": "5e circ. — Europe du Sud-Ouest", "zone": "Europe du Sud-Ouest"}, "Espagne": {"name": "Nathalie Coggia", "email": "nathalie.coggia@assemblee-nationale.fr", "groupe": "RN", "circ": "5e circ. — Europe du Sud-Ouest", "zone": "Europe du Sud-Ouest"}, "Monaco": {"name": "Nathalie Coggia", "email": "nathalie.coggia@assemblee-nationale.fr", "groupe": "RN", "circ": "5e circ. — Europe du Sud-Ouest", "zone": "Europe du Sud-Ouest"}, "Portugal": {"name": "Nathalie Coggia", "email": "nathalie.coggia@assemblee-nationale.fr", "groupe": "RN", "circ": "5e circ. — Europe du Sud-Ouest", "zone": "Europe du Sud-Ouest"}, "Liechtenstein": {"name": "Marie-Ange Rousselot", "email": "marie-ange.rousselot@assemblee-nationale.fr", "groupe": "RE", "circ": "6e circ. — Suisse", "zone": "Suisse"}, "Suisse": {"name": "Marie-Ange Rousselot", "email": "marie-ange.rousselot@assemblee-nationale.fr", "groupe": "RE", "circ": "6e circ. — Suisse", "zone": "Suisse"}, "Albanie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Allemagne": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Autriche": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Bosnie-Herzégovine": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Bulgarie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Croatie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Hongrie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Kosovo": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Macédoine du Nord": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Monténégro": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Pologne": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "République tchèque": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Roumanie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Serbie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Slovaquie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Slovénie": {"name": "Frédéric Petit", "email": "frederic.petit@assemblee-nationale.fr", "groupe": "MODEM", "circ": "7e circ. — Europe centrale", "zone": "Europe centrale"}, "Chypre": {"name": "Caroline Yadan", "email": "caroline.yadan@assemblee-nationale.fr", "groupe": "RE", "circ": "8e circ. — Méditerranée orientale", "zone": "Méditerranée orientale"}, "Grèce": {"name": "Caroline Yadan", "email": "caroline.yadan@assemblee-nationale.fr", "groupe": "RE", "circ": "8e circ. — Méditerranée orientale", "zone": "Méditerranée orientale"}, "Israël": {"name": "Caroline Yadan", "email": "caroline.yadan@assemblee-nationale.fr", "groupe": "RE", "circ": "8e circ. — Méditerranée orientale", "zone": "Méditerranée orientale"}, "Italie": {"name": "Caroline Yadan", "email": "caroline.yadan@assemblee-nationale.fr", "groupe": "RE", "circ": "8e circ. — Méditerranée orientale", "zone": "Méditerranée orientale"}, "Malte": {"name": "Caroline Yadan", "email": "caroline.yadan@assemblee-nationale.fr", "groupe": "RE", "circ": "8e circ. — Méditerranée orientale", "zone": "Méditerranée orientale"}, "Turquie": {"name": "Caroline Yadan", "email": "caroline.yadan@assemblee-nationale.fr", "groupe": "RE", "circ": "8e circ. — Méditerranée orientale", "zone": "Méditerranée orientale"}, "Algérie": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Bénin": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Burkina Faso": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Cap-Vert": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Côte d'Ivoire": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Gambie": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Ghana": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Guinée": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Guinée-Bissau": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Liberia": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Mali": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Maroc": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Mauritanie": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Niger": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Nigeria": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Sénégal": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Sierra Leone": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Togo": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Tunisie": {"name": "Karim Ben Cheikh", "email": "karim.bencheikh@assemblee-nationale.fr", "groupe": "ECO", "circ": "9e circ. — Afrique du Nord & Ouest", "zone": "Afrique du Nord & Ouest"}, "Afrique du Sud": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Angola": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Arabie saoudite": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Bahreïn": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Botswana": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Burundi": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Cameroun": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Centrafrique": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Comores": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Congo": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Djibouti": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Égypte": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Émirats arabes unis": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Érythrée": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Éthiopie": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Gabon": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Guinée équatoriale": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Irak": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Iran": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Jordanie": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Kenya": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Koweït": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Liban": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Lesotho": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Libye": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Madagascar": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Malawi": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Maurice": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Mozambique": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Namibie": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Oman": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Ouganda": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Palestine": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Qatar": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "République démocratique du Congo": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Rwanda": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "São Tomé-et-Príncipe": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Seychelles": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Somalie": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Soudan": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Soudan du Sud": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Syrie": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Tanzanie": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Tchad": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Yémen": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Zambie": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Zimbabwe": {"name": "Amélia Lakrafi", "email": "amelia.lakrafi@assemblee-nationale.fr", "groupe": "RE", "circ": "10e circ. — Afrique & Moyen-Orient", "zone": "Afrique & Moyen-Orient"}, "Afghanistan": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Australie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Bangladesh": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Bhoutan": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Birmanie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Brunei": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Cambodge": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Chine": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Corée du Nord": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Corée du Sud": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Fidji": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Inde": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Indonésie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Japon": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Kiribati": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Laos": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Malaisie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Maldives": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Marshall": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Micronésie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Mongolie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Nauru": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Népal": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Nouvelle-Zélande": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Palaos": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Pakistan": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Papouasie-Nouvelle-Guinée": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Philippines": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Russie": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Salomon": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Samoa": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Singapour": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Sri Lanka": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Taïwan": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Thaïlande": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Timor oriental": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Tonga": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Tuvalu": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Ukraine": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Vanuatu": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}, "Vietnam": {"name": "Anne Genetet", "email": "anne.genetet@assemblee-nationale.fr", "groupe": "RE", "circ": "11e circ. — Asie & Océanie", "zone": "Asie & Océanie"}};
+const PAYS_LIST = ["Afghanistan", "Afrique du Sud", "Albanie", "Algérie", "Allemagne", "Andorre", "Angola", "Antigua-et-Barbuda", "Arabie saoudite", "Argentine", "Australie", "Autriche", "Bahamas", "Bahreïn", "Bangladesh", "Barbade", "Belgique", "Belize", "Bhoutan", "Birmanie", "Bolivie", "Bosnie-Herzégovine", "Botswana", "Brunei", "Brésil", "Bulgarie", "Burkina Faso", "Burundi", "Bénin", "Cambodge", "Cameroun", "Canada", "Cap-Vert", "Centrafrique", "Chili", "Chine", "Chypre", "Colombie", "Comores", "Congo", "Corée du Nord", "Corée du Sud", "Costa Rica", "Croatie", "Cuba", "Côte d'Ivoire", "Danemark", "Djibouti", "Dominique", "Espagne", "Estonie", "Fidji", "Finlande", "Gabon", "Gambie", "Ghana", "Grenade", "Grèce", "Guatemala", "Guinée", "Guinée équatoriale", "Guinée-Bissau", "Guyana", "Haïti", "Honduras", "Hongrie", "Inde", "Indonésie", "Irak", "Iran", "Irlande", "Islande", "Israël", "Italie", "Jamaïque", "Japon", "Jordanie", "Kenya", "Kiribati", "Kosovo", "Koweït", "Laos", "Lesotho", "Lettonie", "Liban", "Liberia", "Libye", "Liechtenstein", "Lituanie", "Luxembourg", "Macédoine du Nord", "Madagascar", "Malaisie", "Malawi", "Maldives", "Mali", "Malte", "Maroc", "Marshall", "Maurice", "Mauritanie", "Mexique", "Micronésie", "Monaco", "Mongolie", "Monténégro", "Mozambique", "Namibie", "Nauru", "Nicaragua", "Niger", "Nigeria", "Norvège", "Nouvelle-Zélande", "Népal", "Oman", "Ouganda", "Pakistan", "Palaos", "Palestine", "Panama", "Papouasie-Nouvelle-Guinée", "Paraguay", "Pays-Bas", "Philippines", "Pologne", "Portugal", "Pérou", "Qatar", "Roumanie", "Royaume-Uni", "Russie", "Rwanda", "République dominicaine", "République démocratique du Congo", "République tchèque", "Saint-Christophe-et-Niévès", "Saint-Vincent-et-les-Grenadines", "Sainte-Lucie", "Salomon", "Salvador", "Samoa", "Serbie", "Seychelles", "Sierra Leone", "Singapour", "Slovaquie", "Slovénie", "Somalie", "Soudan", "Soudan du Sud", "Sri Lanka", "Suisse", "Suriname", "Suède", "Syrie", "São Tomé-et-Príncipe", "Sénégal", "Tanzanie", "Taïwan", "Tchad", "Thaïlande", "Timor oriental", "Togo", "Tonga", "Trinité-et-Tobago", "Tunisie", "Turquie", "Tuvalu", "Ukraine", "Uruguay", "Vanuatu", "Venezuela", "Vietnam", "Yémen", "Zambie", "Zimbabwe", "Égypte", "Émirats arabes unis", "Équateur", "Érythrée", "États-Unis", "Éthiopie"];
+
+function switchTab(tab) {
+  const isFrance = tab === 'france';
+  document.getElementById('tab-france').style.background = isFrance ? '#1a2744' : '#fff';
+  document.getElementById('tab-france').style.color = isFrance ? '#fff' : '#8a9bb8';
+  document.getElementById('tab-etranger').style.background = isFrance ? '#fff' : '#1a2744';
+  document.getElementById('tab-etranger').style.color = isFrance ? '#8a9bb8' : '#fff';
+  document.getElementById('panel-france').style.display = isFrance ? 'block' : 'none';
+  document.getElementById('panel-etranger').style.display = isFrance ? 'none' : 'block';
+  document.getElementById('deputy-result').innerHTML = '';
+  unlockStep2(false);
+}
+
+function initPaysSelect() {
+  const sel = document.getElementById('pays-select');
+  if (!sel) return;
+  PAYS_LIST.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    opt.textContent = p;
+    sel.appendChild(opt);
+  });
+}
+
+function findDeputyEtranger() {
+  const pays = document.getElementById('pays-select').value;
+  const result = document.getElementById('deputy-result');
+  if (!pays) {
+    result.innerHTML = '<div class="error-box" style="margin-top:1rem;">Veuillez sélectionner votre pays de résidence.</div>';
+    return;
+  }
+  const dep = PAYS_TO_DEPUTY[pays];
+  if (!dep) {
+    result.innerHTML = '<div class="error-box" style="margin-top:1rem;">Pays non trouvé. <a href="https://www.assemblee-nationale.fr/dyn/vos-deputes" target="_blank" style="color:#c0392b;">→ assemblee-nationale.fr</a></div>';
+    unlockStep2(false);
+    return;
+  }
+  displayDeputy({...dep, pays: pays, civ: dep.civ || 'M'});
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initPaysSelect();
+});
+
+let currentDeputy = null;
+
+function initials(name) {
+  return name.split(' ').filter(w => w.length > 2).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+}
+
+function findDeputy() {
+  const cp = document.getElementById('cp').value.trim();
+  const result = document.getElementById('deputy-result');
+  if (!/^\d{5}$/.test(cp)) {
+    result.innerHTML = '<div class="error-box" style="margin-top:1rem;">Veuillez saisir un code postal valide à 5 chiffres.</div>';
+    return;
+  }
+  let dept;
+  if (cp.startsWith('97')) {
+    dept = cp.substring(0, 3).padStart(3,'0');
+  } else if (cp.startsWith('200') || cp.startsWith('201') || cp.startsWith('202')) {
+    dept = parseInt(cp) < 20200 ? '2A' : '2B';
+  } else {
+    dept = cp.substring(0, 2);
+  }
+  const matches = DEPUTIES_BY_DEPT.filter(d => d.dept === dept);
+  if (!matches.length) {
+    result.innerHTML = '<div class="error-box" style="margin-top:1rem;">Département non trouvé.<br><a href="https://www.assemblee-nationale.fr/dyn/vos-deputes" target="_blank" style="color:#c0392b;font-weight:500;">→ Trouvez votre député sur assemblee-nationale.fr</a></div>';
+    unlockStep2(false);
+    return;
+  }
+  if (matches.length === 1) {
+    displayDeputy(matches[0]);
+  } else {
+    showCircoChoice(matches);
+  }
+}
+
+function showCircoChoice(matches) {
+  window._choiceMatches = matches;
+  const items = matches.map((d, i) =>
+    '<div onclick="selectDeputy(' + i + ')" style="cursor:pointer;padding:10px 12px;border:0.5px solid #c0cfe8;border-radius:8px;margin-top:8px;background:#f5f7fb;" onmouseover="this.style.background=\'#e8f0fb\'" onmouseout="this.style.background=\'#f5f7fb\'">' +
+    '<div style="font-size:14px;font-weight:500;color:#1a2744;">' + d.name + '</div>' +
+    '<div style="font-size:12px;color:#8a9bb8;margin-top:2px;">' + d.circ + '</div>' +
+    '</div>'
+  ).join('');
+  document.getElementById('deputy-result').innerHTML =
+    '<div style="margin-top:1rem;"><div style="font-size:13px;color:#8a9bb8;margin-bottom:4px;">Votre département a plusieurs circonscriptions — cliquez sur votre député :</div>' + items + '</div>';
+}
+
+function selectDeputy(i) { displayDeputy(window._choiceMatches[i]); }
+
+function displayDeputy(found) {
+  currentDeputy = found;
+  const ini = initials(found.name);
+  document.getElementById('deputy-result').innerHTML =
+    '<div class="deputy-result"><div class="deputy-found">' +
+    '<div class="deputy-avatar">' + ini + '</div>' +
+    '<div><div class="deputy-name">' + found.name + '</div>' +
+    '<div class="deputy-circ">' + found.circ + '</div>' +
+    '<div class="deputy-email">' + found.email + '</div>' +
+    '<div class="deputy-groupe">Groupe ' + found.groupe + '</div></div></div>' +
+    '<p style="font-size:11px;color:#8a9bb8;margin-top:10px;line-height:1.5;">Si ce député ne correspond pas à votre circonscription exacte, <a href="https://www.assemblee-nationale.fr/dyn/vos-deputes" target="_blank" style="color:#4a7fd4;">vérifiez sur assemblee-nationale.fr</a>.</p></div>';
+  document.getElementById('num1').classList.add('done');
+  document.getElementById('num1').innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  renderMail(found);
+  unlockStep2(true);
+  setTimeout(() => document.getElementById('step2').scrollIntoView({behavior:'smooth',block:'start'}), 300);
+}
+
+function getCivility(dep) {
+  if (dep.civ === 'F') return 'Madame la Députée,';
+  return 'Monsieur le Député,';
+}
+
+function renderMail(dep) {
+  const q = QUESTION;
+  const salutation = getCivility(dep);
+  const bodyText = salutation + '\n\nEn tant que citoyen(ne) de votre circonscription, je me permets de vous adresser la question suivante :\n\n\u00ab ' + q + ' \u00bb\n\nJe vous serais reconnaissant(e) de bien vouloir me faire part de votre position sur ce sujet.\n\nDans l\'attente de votre réponse, je vous adresse mes cordiales salutations.';
+  document.getElementById('mail-container').innerHTML =
+    '<div class="mail-preview" style="margin-bottom:1rem;">' +
+    '<div class="mail-topbar"><div class="mail-dot" style="background:#e74c3c;"></div><div class="mail-dot" style="background:#f39c12;"></div><div class="mail-dot" style="background:#2ecc71;"></div></div>' +
+    '<div class="mail-body">' +
+    '<div class="mail-field"><span class="mail-label">À</span><span class="mail-val blue">' + dep.email + '</span></div>' +
+    '<div class="mail-field"><span class="mail-label">Objet</span><span class="mail-val">' + SUBJECT + '</span></div>' +
+    '<div class="mail-content">' + bodyText.replace(/\n/g,'<br/>') + '</div>' +
+    '<div class="mail-sig">Envoyé via <strong>Ma Question Citoyenne</strong> — maquestioncitoyenne.fr</div>' +
+    '</div></div>';
+}
+
+function unlockStep2(on) {
+  const s2 = document.getElementById('step2');
+  const btn = document.getElementById('btn-send');
+  if (on) { s2.classList.remove('step-locked'); s2.classList.add('unlocked'); btn.disabled = false; }
+  else { s2.classList.add('step-locked'); s2.classList.remove('unlocked'); btn.disabled = true; }
+}
+
+function openMail() {
+  if (!currentDeputy) return;
+  const q = QUESTION;
+  const salutation = getCivility(currentDeputy);
+  const body = salutation + '\n\nEn tant que citoyen(ne) de votre circonscription, je me permets de vous adresser la question suivante :\n\n\u00ab ' + q + ' \u00bb\n\nJe vous serais reconnaissant(e) de bien vouloir me faire part de votre position sur ce sujet.\n\nDans l\'attente de votre réponse, je vous adresse mes cordiales salutations.\n\n---\nEnvoyé via Ma Question Citoyenne — maquestioncitoyenne.fr';
+  window.location.href = 'mailto:' + currentDeputy.email + '?subject=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(body);
+}
+
+document.getElementById('cp').addEventListener('keydown', function(e) { if (e.key === 'Enter') findDeputy(); });
+
+</script>
+
+
+
+</body></html>
